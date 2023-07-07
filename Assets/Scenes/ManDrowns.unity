@@ -541,6 +541,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FishGuy
       objectReference: {fileID: 0}
+    - target: {fileID: 8747601961700547071, guid: 507b35ffb34f82741ba1ff9100176971, type: 3}
+      propertyPath: lengthInSec
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
