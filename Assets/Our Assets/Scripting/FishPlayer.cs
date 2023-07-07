@@ -37,4 +37,12 @@ public class FishPlayer : MonoBehaviour
         }
         direction = context.ReadValue<Vector2>();
     } 
+
+    void OnTriggerEnter2D(Collider2D other){
+        //Debug.Log(other);
+        if(other.tag.Equals("Food")){
+            Destroy(other.gameObject);
+            strength++;
+        }
+    }
 }
