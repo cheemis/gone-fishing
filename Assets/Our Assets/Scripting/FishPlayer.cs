@@ -25,7 +25,7 @@ public class FishPlayer : MonoBehaviour
 
     void FixedUpdate(){
         if(body){
-            body.AddTorque(direction.x*turnStrength, ForceMode2D.Force);
+            body.AddTorque(-direction.x*turnStrength, ForceMode2D.Force);
             body.AddForce(direction.y*movementSpeed*transform.up, ForceMode2D.Force);
         }
     }

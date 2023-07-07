@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,27 +32,41 @@ public class FishMinigame : MonoBehaviour
         }
         instance = this;
         
+    }
+    
+    private void Start() {
         //* only uncomment for testing!!
         TryRunGame(currentMinigameBar, 1f);
         //*/
     }
     
     private void Update() {
-        if (running) {
+        if (running) { //only when a minigame is ongoing
             lastTime += Time.deltaTime;
-            if (inputCount >= currentMinigameBar.mashingGoal) {
-                
-            }
-            else if (lastTime >= currentMinigameBar.timeLimits[stageIndex]) NextTimeLimit();
-        }
-    }
-    
-    private void NextTimeLimit() {
-        if (stageIndex == currentMinigameBar.timeLimits.Length) {
+            if (inputCount >= currentMinigameBar.mashingGoal) EndGame(true); //succeeded in completing the minigame
             
+            else if (lastTime >= currentMinigameBar.timeLimits[stageIndex]) {
+                if (stageIndex == currentMinigameBar.timeLimits.Length) { // failed to complete the minigame in time
+                    EndGame(false);
+                }
+                else {
+                    lastTime = 0;
+                    stageIndex++;
+                }
+            }
         }
     }
-    
+
+	private void EndGame(bool success) {
+        running = false;
+        if (success) {
+            Debug.Log("success");
+        }
+        else {
+            Debug.Log("failure");
+        }
+	}
+
     public void TryRunGame(MinigameBarObject newMinigameBar, float newStrength) {
         if (!running) {
             runGame.Invoke(newMinigameBar, 1f);
@@ -70,26 +85,32 @@ public class FishMinigame : MonoBehaviour
     public void InputUp(InputAction.CallbackContext context) {
         if (running && context.started) {
             if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
-                
+                Debug.Log(context.action.name);
             }
         }
     }
     
     public void InputLeft(InputAction.CallbackContext context) {
         if (running && context.started) {
-            
+            if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
+                Debug.Log(context.action.name);
+            }
         }
     }
     
     public void InputRight(InputAction.CallbackContext context) {
         if (running && context.started) {
-            
+            if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
+                Debug.Log(context.action.name);
+            }
         }
     }
     
     public void InputDown(InputAction.CallbackContext context) {
         if (running && context.started) {
-            
+            if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
+                Debug.Log(context.action.name);
+            }
         }
     }
 }
