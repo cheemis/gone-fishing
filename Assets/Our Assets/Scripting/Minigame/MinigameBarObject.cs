@@ -10,7 +10,7 @@ public class MinigameBarObject : MonoBehaviour
     public float mashingGoal; //0 ... 5
     public float[] timeLimits; //0 ... 5
     
-    //TODO array of inputs
+    public string[] inputs;
     
     /*TODO have strength influence
     more strength = easier minigames (input * strength_modifier)
