@@ -39,9 +39,13 @@ public class MinigameBarObject : MonoBehaviour
         
         //randomly assign inputs
         RandomizeInputs();
+        
+        //*only uncomment for testing
+        FishMinigame.instance.TryRunGame(this, 1f);
+        //*/
     }
     
-    private void RandomizeInputs() {
+    public void RandomizeInputs() {
         inputs = new string[timeLimits.Length];
         List<int> pickedNums = new List<int>();
         for(int i = 0; i < timeLimits.Length; i++) {

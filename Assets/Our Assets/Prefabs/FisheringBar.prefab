@@ -177,7 +177,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2209572667917651420}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
@@ -190,8 +190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -198.9, y: 272}
-  m_SizeDelta: {x: 1014, y: 544}
+  m_AnchoredPosition: {x: -50, y: 272}
+  m_SizeDelta: {x: 1014, y: 543.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4176454043043797525
 CanvasRenderer:
@@ -213,6 +213,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c32bc020cae9134da7b8f21e8434fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.1708132, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0.033422947, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
   percentFull: 0
   statusColor: {r: 0.10196079, g: 0.65882355, b: 0.63529414, a: 1}
   image: {fileID: 4641493931135525521}
