@@ -29,7 +29,8 @@ public class MinigameBarObject : MonoBehaviour
 
         mashingGoal = minigameBar.mashingGoal;
         
-        totalTimeLimit = minigameBar.totalTimeLimit;
+        totalTimeLimit = 0; 
+        foreach(float f in timeLimits) totalTimeLimit += f;
         
         //setup timeLimits
         timeLimits = minigameBar.timeLimits;
@@ -39,9 +40,13 @@ public class MinigameBarObject : MonoBehaviour
         
         //randomly assign inputs
         RandomizeInputs();
+        
+        //*only uncomment for testing
+        FishMinigame.instance.TryRunGame(this, 1f);
+        //*/
     }
     
-    private void RandomizeInputs() {
+    public void RandomizeInputs() {
         inputs = new string[timeLimits.Length];
         List<int> pickedNums = new List<int>();
         for(int i = 0; i < timeLimits.Length; i++) {

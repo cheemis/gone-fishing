@@ -16,6 +16,7 @@ public class FishMinigame : MonoBehaviour
     //more strength = easier minigames (input * strength_modifier)
     private float strength;
     public float pointsEarned; //xp points
+    public FisheringBarGraphic barGraphic;
     
     //* only uncomment for testing!!
     [SerializeField]
@@ -37,8 +38,9 @@ public class FishMinigame : MonoBehaviour
         
     }
     
-    private void Start() {
-        //* only uncomment for testing!!
+    //TODO: replace this, either in this script or elsewhere, with the actual way of starting the minigame
+    private void OnEnable() {
+        /* only uncomment for testing!!
         TryRunGame(currentMinigameBar, 1f);
         //*/
     }
@@ -48,12 +50,13 @@ public class FishMinigame : MonoBehaviour
     }
     
     public void BeginRunningGame(MinigameBarObject newMinigameBar, float newStrength) {
+        currentMinigameBar = newMinigameBar;
+        barGraphic.ChangeColor(currentMinigameBar.inputs[stageIndex][0]);
         lastTime = 0;
         stageIndex = 0;
         inputCount = 0;
         strength = newStrength;
         running = true;
-        currentMinigameBar = newMinigameBar;
     }
     
     public void InputUp(InputAction.CallbackContext context) {
@@ -95,15 +98,18 @@ public class FishMinigame : MonoBehaviour
     private void Update() {
         if (running) { //only when a minigame is ongoing
             lastTime += Time.deltaTime;
+            Debug.Log(lastTime);
+            barGraphic.percentFull = inputCount / currentMinigameBar.mashingGoal;
+            barGraphic.timeRemainingPercent = lastTime / currentMinigameBar.totalTimeLimit;
             if (inputCount >= currentMinigameBar.mashingGoal) EndGame(true); //succeeded in completing the minigame
             
-            else if (lastTime >= currentMinigameBar.timeLimits[stageIndex]) {
-                if (stageIndex + 1 == currentMinigameBar.timeLimits.Length) { // failed to complete the minigame in time
-                    EndGame(false);
-                }
+            else if (lastTime >= currentMinigameBar.timeLimits[stageIndex]) { //move to next timeLimit/stage
+                if (stageIndex + 1 == currentMinigameBar.timeLimits.Length) 
+                    EndGame(false); // failed to complete the minigame in time
                 else {
                     lastTime = 0;
                     stageIndex++;
+                    barGraphic.ChangeColor(currentMinigameBar.inputs[stageIndex][0]);
                 }
             }
         }
@@ -119,6 +125,7 @@ public class FishMinigame : MonoBehaviour
             //give the worm spawner foodEarned
         }
         else {
+            Debug.Log(currentMinigameBar.totalTimeLimit);
             Debug.Log("failure");
         }
 	}

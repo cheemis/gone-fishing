@@ -18,7 +18,7 @@ public class FishPlayer : MonoBehaviour
     private Vector2 direction;
 
     public float strength;
-
+    
     void Awake(){
         
         if(animController == null){
