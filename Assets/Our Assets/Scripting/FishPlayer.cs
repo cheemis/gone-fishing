@@ -67,7 +67,7 @@ public class FishPlayer : MonoBehaviour
         }
         if(other.tag.Equals("Lure")){
             SetStruggle(true);
-            MinigameBarObject game = other.GetComponent<MinigameBarObject>();
+            LureObject game = other.GetComponent<LureObject>();
             FishMinigame.instance.TryRunGame(game, strength);
         }
     }

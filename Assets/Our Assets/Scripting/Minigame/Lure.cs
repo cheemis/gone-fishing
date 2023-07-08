@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Minigame Difficulty Level", menuName = "Minigame Difficulty Level", order = 0)]
 [System.Serializable]
-public class MinigameBar : ScriptableObject
+public class Lure : ScriptableObject
 {
     public float mashingGoal;
     public List<float> timeLimits;

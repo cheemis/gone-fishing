@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class MinigameBarObject : MonoBehaviour
+public class LureObject : MonoBehaviour
 {
     [SerializeField]
-    private MinigameBar minigameBar;
+    private Lure lure;
     public float mashingGoal; //0 ... 5
     public List<float> timeLimits; //0 ... 5
     public float totalTimeLimit;
@@ -21,19 +21,22 @@ public class MinigameBarObject : MonoBehaviour
     public float progressBarSpeed; //0 ... 5
     
     private void Awake() {
-        if (minigameBar == null) {
-            Debug.Log("minigameBar is not assigned!");
+        if (lure == null) {
+            Debug.Log("lure is not assigned!");
         }
         
-        pointsPerHit = minigameBar.pointsPerHit;
+        pointsPerHit = lure.pointsPerHit;
 
-        mashingGoal = minigameBar.mashingGoal;
+        mashingGoal = lure.mashingGoal;
+        
+        totalTimeLimit = 0; 
+        foreach(float f in timeLimits) totalTimeLimit += f;
         
         //setup timeLimits
-        timeLimits = minigameBar.timeLimits;
+        timeLimits = lure.timeLimits;
         // if (timeLimits.Count > 1) 
         //     for (int i = 0; i < timeLimits.Count; i++) 
-        //         timeLimits[i] = Random.Range(minigameBar.minTimeLimits[i], minigameBar.maxTimeLImits[i]);
+        //         timeLimits[i] = Random.Range(lure.minTimeLimits[i], lure.maxTimeLImits[i]);
         
         totalTimeLimit = 0; 
         foreach(float f in timeLimits) {totalTimeLimit += f;}
@@ -71,5 +74,5 @@ public class MinigameBarObject : MonoBehaviour
         }
     }
     
-    public float GetFoodReward() { return minigameBar.foodReward; }
+    public float GetFoodReward() { return lure.foodReward; }
 }
