@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject MainMenu;
-    public GameObject SettingsMenu;
-    public GameObject CreditsMenu;
+    [SerializeField] private GameObject MainMenu;
+    [SerializeField] private GameObject SettingsMenu;
+    [SerializeField] private GameObject CreditsMenu;
+    
+    [Space]
+    
+    [SerializeField] private Slider SFXVolumeSlider; 
+    [SerializeField] private Slider MusicVolumeSlider;
     
     public string gameSceneName = "Main";
-    
+
+    #region Button Methods
+
     public void PlayGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
@@ -40,6 +49,24 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+    
+    #endregion
+
+    #region Settings Methods
+    
+    [PublicAPI]
+    public void UpdateSFXVolume()
+    {
+        AudioManager.instance.SFXVolume = SFXVolumeSlider.value;
+    }
+    
+    [PublicAPI]
+    public void UpdateMusicVolume()
+    {
+        AudioManager.instance.MusicVolume = MusicVolumeSlider.value;
+    }
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
