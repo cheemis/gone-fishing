@@ -12,6 +12,7 @@ public class MinigameBarObject : MonoBehaviour
     
     public string[] inputs;
     
+    
     private static readonly string[] inputNames = {
         "Up", "Left", "Right", "Down"
     };
@@ -19,22 +20,21 @@ public class MinigameBarObject : MonoBehaviour
     /*TODO have strength influence
     more strength = easier minigames (input * strength_modifier)
     //*/
+    
     /*TODO points system
     get points for each valid input
     no deduction points on missed input
     //*/
+    public float pointsPerHit;
 
     public float progressBarSpeed; //0 ... 5
-    
-    MinigameBarObject(float nMashingGoal, float[] nTimeLimits) {
-        mashingGoal = nMashingGoal;
-        timeLimits = nTimeLimits;
-    }
     
     private void Awake() {
         if (minigameBar == null) {
             Debug.Log("minigameBar is not assigned!");
         }
+        
+        pointsPerHit = minigameBar.pointsPerHit;
         
         /* TODO
         number of goals be thing - measuring difficulty

@@ -13,6 +13,7 @@ public class FishMinigame : MonoBehaviour
     private int stageIndex;
     private float inputCount;
     private float strength;
+    public float pointsEarned;
     
     //* only uncomment for testing!!
     [SerializeField]
@@ -46,7 +47,7 @@ public class FishMinigame : MonoBehaviour
             if (inputCount >= currentMinigameBar.mashingGoal) EndGame(true); //succeeded in completing the minigame
             
             else if (lastTime >= currentMinigameBar.timeLimits[stageIndex]) {
-                if (stageIndex == currentMinigameBar.timeLimits.Length) { // failed to complete the minigame in time
+                if (stageIndex + 1 == currentMinigameBar.timeLimits.Length) { // failed to complete the minigame in time
                     EndGame(false);
                 }
                 else {
@@ -58,9 +59,13 @@ public class FishMinigame : MonoBehaviour
     }
 
 	private void EndGame(bool success) {
+        Debug.Log(inputCount);
+        Debug.Log(pointsEarned);
         running = false;
         if (success) {
             Debug.Log("success");
+            //give player points
+            //give the worm spawner foodEarned
         }
         else {
             Debug.Log("failure");
@@ -68,9 +73,7 @@ public class FishMinigame : MonoBehaviour
 	}
 
     public void TryRunGame(MinigameBarObject newMinigameBar, float newStrength) {
-        if (!running) {
-            runGame.Invoke(newMinigameBar, 1f);
-        }
+        if (!running) runGame.Invoke(newMinigameBar, 1f);
     }
     
     public void BeginRunningGame(MinigameBarObject newMinigameBar, float newStrength) {
@@ -83,34 +86,38 @@ public class FishMinigame : MonoBehaviour
     }
     
     public void InputUp(InputAction.CallbackContext context) {
-        if (running && context.started) {
+        if (running && context.started)
             if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
                 Debug.Log(context.action.name);
+                pointsEarned += currentMinigameBar.pointsPerHit;
+                inputCount += strength;
             }
-        }
     }
     
     public void InputLeft(InputAction.CallbackContext context) {
-        if (running && context.started) {
+        if (running && context.started)
             if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
                 Debug.Log(context.action.name);
+                pointsEarned += currentMinigameBar.pointsPerHit;
+                inputCount += strength;
             }
-        }
     }
     
     public void InputRight(InputAction.CallbackContext context) {
-        if (running && context.started) {
+        if (running && context.started)
             if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
                 Debug.Log(context.action.name);
+                pointsEarned += currentMinigameBar.pointsPerHit;
+                inputCount += strength;
             }
-        }
     }
     
     public void InputDown(InputAction.CallbackContext context) {
-        if (running && context.started) {
+        if (running && context.started)
             if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
                 Debug.Log(context.action.name);
+                pointsEarned += currentMinigameBar.pointsPerHit;
+                inputCount += strength;
             }
-        }
     }
 }

@@ -276,7 +276,19 @@ MonoBehaviour:
     m_ActionId: ad8ddf97-0e4a-4a82-8f23-feba750a3752
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FishMinigame, Assembly-CSharp
+        m_MethodName: InputUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 94e91ddd-0cb5-4f6c-af70-3336a7ac0d3b
     m_ActionName: Fishing Minigame/Up[/Keyboard/upArrow]
   - m_PersistentCalls:

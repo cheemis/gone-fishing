@@ -9,4 +9,5 @@ public class MinigameBar : ScriptableObject
     public float mashingGoal;
     public float[] timeLimits;
     public float foodReward;
+    public float pointsPerHit;
 }
