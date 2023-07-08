@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 8415799175476806160}
   - component: {fileID: 7579928197388312862}
   - component: {fileID: 898344927185912354}
+  - component: {fileID: 6112051814872521137}
   m_Layer: 0
   m_Name: Fishe
   m_TagString: Untagged
@@ -115,7 +116,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2476458268714073343}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -292,20 +293,56 @@ MonoBehaviour:
     m_ActionId: 94e91ddd-0cb5-4f6c-af70-3336a7ac0d3b
     m_ActionName: Fishing Minigame/Up[/Keyboard/upArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FishMinigame, Assembly-CSharp
+        m_MethodName: InputLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6df4ea0c-5672-4ab0-b173-a4a51faf1a34
     m_ActionName: Fishing Minigame/Left[/Keyboard/a,/Keyboard/leftArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FishMinigame, Assembly-CSharp
+        m_MethodName: InputRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e394b932-4552-478d-8028-50735f9c0771
     m_ActionName: Fishing Minigame/Right[/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FishMinigame, Assembly-CSharp
+        m_MethodName: InputDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d2d7f3ac-48c3-4b4d-932b-0e0f9fdfa37b
     m_ActionName: Fishing Minigame/Down[/Keyboard/s,/Keyboard/downArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Fishing Minigame
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &898344927185912354
@@ -323,7 +360,29 @@ MonoBehaviour:
   movementSpeed: 3
   turnStrength: 2
   body: {fileID: 4746510316960539855}
+  animController: {fileID: 0}
   strength: 0
+--- !u!95 &6112051814872521137
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476458268714073343}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d4e05537fd1736498fd2f8e8d4bfad9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2700360560371835119
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +414,7 @@ Transform:
   - {fileID: 5687850230683024181}
   - {fileID: 1024697153292095135}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3899135175571832350
 GameObject:
