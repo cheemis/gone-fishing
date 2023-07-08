@@ -146,6 +146,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: FisheringBar
       objectReference: {fileID: 0}
+    - target: {fileID: 3260246617719384144, guid: fc1565cc6eb9f954aa1238253b415ba5, type: 3}
+      propertyPath: m_Color.a
+      value: 0.48235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260246617719384144, guid: fc1565cc6eb9f954aa1238253b415ba5, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260246617719384144, guid: fc1565cc6eb9f954aa1238253b415ba5, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260246617719384144, guid: fc1565cc6eb9f954aa1238253b415ba5, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6015155923414827205, guid: fc1565cc6eb9f954aa1238253b415ba5, type: 3}
       propertyPath: m_RootOrder
       value: -1

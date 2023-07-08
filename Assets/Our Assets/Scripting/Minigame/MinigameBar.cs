@@ -12,6 +12,7 @@ public class MinigameBar : ScriptableObject
     public float[] maxTimeLImits;
     
     [Tooltip("The total amount of time the minigame will be active for this level of difficulty")]
+    [HideInInspector]
     public float totalTimeLimit;
     public float foodReward;
     public float pointsPerHit;

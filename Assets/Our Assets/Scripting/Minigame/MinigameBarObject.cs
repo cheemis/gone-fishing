@@ -29,7 +29,8 @@ public class MinigameBarObject : MonoBehaviour
 
         mashingGoal = minigameBar.mashingGoal;
         
-        totalTimeLimit = minigameBar.totalTimeLimit;
+        totalTimeLimit = 0; 
+        foreach(float f in timeLimits) totalTimeLimit += f;
         
         //setup timeLimits
         timeLimits = minigameBar.timeLimits;

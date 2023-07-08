@@ -98,12 +98,14 @@ public class FishMinigame : MonoBehaviour
     private void Update() {
         if (running) { //only when a minigame is ongoing
             lastTime += Time.deltaTime;
+            Debug.Log(lastTime);
             barGraphic.percentFull = inputCount / currentMinigameBar.mashingGoal;
             barGraphic.timeRemainingPercent = lastTime / currentMinigameBar.totalTimeLimit;
             if (inputCount >= currentMinigameBar.mashingGoal) EndGame(true); //succeeded in completing the minigame
             
-            else if (lastTime >= currentMinigameBar.timeLimits[stageIndex]) {
-                if (stageIndex + 1 == currentMinigameBar.timeLimits.Length) EndGame(false); // failed to complete the minigame in time
+            else if (lastTime >= currentMinigameBar.timeLimits[stageIndex]) { //move to next timeLimit/stage
+                if (stageIndex + 1 == currentMinigameBar.timeLimits.Length) 
+                    EndGame(false); // failed to complete the minigame in time
                 else {
                     lastTime = 0;
                     stageIndex++;
@@ -123,6 +125,7 @@ public class FishMinigame : MonoBehaviour
             //give the worm spawner foodEarned
         }
         else {
+            Debug.Log(currentMinigameBar.totalTimeLimit);
             Debug.Log("failure");
         }
 	}
