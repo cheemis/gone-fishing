@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class FishPlayer : MonoBehaviour
 {   
@@ -15,7 +16,9 @@ public class FishPlayer : MonoBehaviour
     private Vector2 direction;
 
     public float strength;
-
+    
+    public float points; //xp
+    
     void Awake(){
         // body = this.gameObject.GetComponent<Rigidbody2D>();
         // if(body == null){

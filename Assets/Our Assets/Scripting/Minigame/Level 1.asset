@@ -15,5 +15,8 @@ MonoBehaviour:
   mashingGoal: 100
   timeLimits:
   - 100
+  minTimeLimits: []
+  maxTimeLImits: []
+  totalTimeLimit: 100
   foodReward: 5
   pointsPerHit: 1
