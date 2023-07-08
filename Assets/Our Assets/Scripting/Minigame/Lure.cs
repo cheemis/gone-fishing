@@ -13,4 +13,7 @@ public class Lure : ScriptableObject
     
     public float foodReward;
     public float pointsPerHit;
+
+    public GameObject Fisherman;
+    public GameObject WormSpawn;
 }

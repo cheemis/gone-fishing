@@ -25,7 +25,7 @@ public class FishMinigame : MonoBehaviour
     
     [SerializeField]
     private UnityEvent<LureObject, float> runGame;
-    
+
     private void Awake() {
         if (instance != null) {
             Destroy(gameObject);
@@ -56,6 +56,7 @@ public class FishMinigame : MonoBehaviour
     public void BeginRunningGame(LureObject newLure, float newStrength) {
         barGraphic.gameObject.SetActive(true);
         currentLure = newLure;
+        currentLure.myBoat.boatState = "fighting";
         barGraphic.ChangeColor(currentLure.inputs[stageIndex][0]);
         lastTime = 0;
         stageIndex = 0;
@@ -66,10 +67,10 @@ public class FishMinigame : MonoBehaviour
     
     public bool GameInput(InputAction.CallbackContext context) {
         bool correct = false;
+        correct = context.action.name == currentLure.inputs[stageIndex];
         if (running && context.started){
-            correct = context.action.name == currentLure.inputs[stageIndex];
             if (correct) {
-                Debug.Log(context.action.name);
+                //Debug.Log(context.action.name);
                 pointsEarned += currentLure.pointsPerHit;
                 inputCount += strength; // inputCount = inputCount + (1 * strength)
             }
@@ -79,6 +80,7 @@ public class FishMinigame : MonoBehaviour
     
     private void Update() {
         if (running) { //only when a minigame is ongoing
+            currentLure.transform.position = FishPlayer.instance.spriteTransform.position - Vector3.back*0.01f;
             lastTime += Time.deltaTime;
             //Debug.Log(lastTime);
             barGraphic.inputRemainingPercent = (currentLure.timeLimits[stageIndex] - lastTime)/ currentLure.timeLimits[stageIndex] ;
@@ -109,6 +111,9 @@ public class FishMinigame : MonoBehaviour
             Debug.Log("success");
             //give player points
             //give the worm spawner foodEarned
+            currentLure.myBoat.boatState = "sinking";
+            Instantiate(currentLure.Fisherman, currentLure.myBoat.transform.position+Vector3.down*3f, currentLure.Fisherman.transform.rotation);
+            Instantiate(currentLure.WormSpawn, currentLure.transform.position, currentLure.WormSpawn.transform.rotation);
         }
         else {
             //Debug.Log(currentLure.totalTimeLimit);
@@ -116,7 +121,9 @@ public class FishMinigame : MonoBehaviour
             Debug.Log("failure");
         }
         FishPlayer.instance.SetStruggle(false);
-        Destroy(currentLure.gameObject);
+        currentLure.gameObject.SetActive(false);
         barGraphic.gameObject.SetActive(false);
-	}
+        //Destroy(currentLure.gameObject);
+    }
+        
 }

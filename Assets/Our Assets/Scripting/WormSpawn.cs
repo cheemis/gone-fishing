@@ -17,5 +17,6 @@ public class WormSpawn : MonoBehaviour
             Quaternion randomRotation = Quaternion.Euler(0,0, Random.Range(0,360));
             Instantiate(Food, randomPos, randomRotation);
         }
+        Destroy(this.gameObject);
     }
 }

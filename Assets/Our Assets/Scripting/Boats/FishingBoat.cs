@@ -39,7 +39,6 @@ public class FishingBoat : MonoBehaviour
     public string boatState = "fishing";
     public float despawnHeight = -20f;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -162,6 +161,8 @@ public class FishingBoat : MonoBehaviour
             //sink lure
             lure.midOffset -= fallingSpeed;
         }
+
+        
 
         //despawn boat
         if(transform.position.y < despawnHeight)

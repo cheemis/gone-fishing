@@ -69,7 +69,7 @@ public class BoatManager : MonoBehaviour
     private void SpawnNewShip()
     {
         //which ship to spawn
-        int randomRange = Random.Range((int)(playerXP - 4), (int)(playerXP + 2));
+        int randomRange = Random.Range((int)(FishPlayer.instance.strength - 2), (int)(FishPlayer.instance.strength + 1 ));
         int shipIndex = (int)Mathf.Clamp(randomRange, 0, ships.Length - 1);
 
         //where to spawn the ship

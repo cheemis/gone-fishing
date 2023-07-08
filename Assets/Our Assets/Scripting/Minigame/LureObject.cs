@@ -11,6 +11,9 @@ public class LureObject : MonoBehaviour
     public List<float> timeLimits; //0 ... 5
     public float totalTimeLimit;
     public List<string> inputs;
+
+    public GameObject Fisherman;
+    public GameObject WormSpawn;
     
     private static readonly string[] inputNames = {
         "Up", "Left", "Right", "Down"
@@ -19,21 +22,22 @@ public class LureObject : MonoBehaviour
     public float pointsPerHit; //xp
 
     public float progressBarSpeed; //0 ... 5
+
+    public FishingBoat myBoat;
     
     private void Awake() {
         if (lure == null) {
             Debug.Log("lure is not assigned!");
         }
         
+        Fisherman = lure.Fisherman;
+        WormSpawn = lure.WormSpawn;
         pointsPerHit = lure.pointsPerHit;
 
         mashingGoal = lure.mashingGoal;
         
-        totalTimeLimit = 0; 
-        foreach(float f in timeLimits) totalTimeLimit += f;
-        
         //setup timeLimits
-        timeLimits = lure.timeLimits;
+        timeLimits = new List<float>(lure.timeLimits);
         // if (timeLimits.Count > 1) 
         //     for (int i = 0; i < timeLimits.Count; i++) 
         //         timeLimits[i] = Random.Range(lure.minTimeLimits[i], lure.maxTimeLImits[i]);

@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 1551261244466191301}
   - component: {fileID: 8262539171680864661}
   - component: {fileID: 2458155680354212580}
+  - component: {fileID: 2165045795160722245}
   m_Layer: 0
   m_Name: Lure
   m_TagString: Lure
@@ -210,7 +211,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -226,6 +227,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &2165045795160722245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6130594046682613614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d858b6c05d7316140a2d28c201c67ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lure: {fileID: 11400000, guid: 22cfcebf164478540b07948989551393, type: 2}
+  mashingGoal: 0
+  timeLimits: []
+  totalTimeLimit: 0
+  inputs: []
+  pointsPerHit: 0
+  progressBarSpeed: 0
+  myBoat: {fileID: 8192301290596379049}
 --- !u!1 &6290012383222135870
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +304,8 @@ MonoBehaviour:
   rotationAcceleration: 5
   boatState: fishing
   despawnHeight: -20
+  Fisherman: {fileID: 1915341761769767957, guid: 507b35ffb34f82741ba1ff9100176971, type: 3}
+  WormSpawn: {fileID: 6830555678200134877, guid: dded1efa60c2eb84b8e8aac0d37609cd, type: 3}
 --- !u!65 &4851961905999591638
 BoxCollider:
   m_ObjectHideFlags: 0

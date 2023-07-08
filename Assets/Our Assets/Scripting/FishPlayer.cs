@@ -18,6 +18,9 @@ public class FishPlayer : MonoBehaviour
     [SerializeField]
     private PlayerInput inputs;
 
+    public Transform spriteTransform;
+
+
     private Vector2 direction;
 
     public float strength;
@@ -73,7 +76,7 @@ public class FishPlayer : MonoBehaviour
         }
         if(other.tag.Equals("Food")){
             Destroy(other.gameObject);
-            strength++;
+            strength+=other.GetComponent<Food>().power;
         }
         if(other.tag.Equals("Lure")){
             SetStruggle(true);

@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac415bd645b10ff4ca4202cefbcb9b65, type: 3}
-  m_Name: Level 1
+  m_Name: Level 2
   m_EditorClassIdentifier: 
-  mashingGoal: 25
+  mashingGoal: 40
   timeLimits:
   - 2
   - 3
+  - 5
   - 2
   foodReward: 5
   pointsPerHit: 1
-  Fisherman: {fileID: 1915341761769767957, guid: 507b35ffb34f82741ba1ff9100176971, type: 3}
-  WormSpawn: {fileID: 6830555678200134877, guid: dded1efa60c2eb84b8e8aac0d37609cd, type: 3}
+  Fisherman: {fileID: 5878647697470908419, guid: 73747551c559d0b4aa94ab49b4bf7c3f, type: 3}
+  WormSpawn: {fileID: 7233650893440777089, guid: 5d4b349fd7c238349b09dd38f11dfd27, type: 3}

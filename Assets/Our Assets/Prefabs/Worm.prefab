@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6071788576558497090}
   - component: {fileID: 8538044474706983177}
   - component: {fileID: 1705101043364447177}
+  - component: {fileID: 8169600390454496305}
   m_Layer: 0
   m_Name: Worm
   m_TagString: Food
@@ -120,3 +121,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &8169600390454496305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056091254752640907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eedcdbfd218e605459af0def12ea4635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 0.1

@@ -104,7 +104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224349267832765376, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 15.34
       objectReference: {fileID: 0}
     - target: {fileID: 8224349267832765376, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -144,8 +144,47 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2108998821004068833, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6134491763631026493}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6130594046682613614, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1561323439610811430}
   m_SourcePrefab: {fileID: 100100000, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+--- !u!114 &4288610825724832 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8192301290596379049, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+  m_PrefabInstance: {fileID: 8196510530263861769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa7f6be26a0f4e4f840a8c695824515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2642456482477772135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6130594046682613614, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+  m_PrefabInstance: {fileID: 8196510530263861769}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1561323439610811430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642456482477772135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d858b6c05d7316140a2d28c201c67ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lure: {fileID: 11400000, guid: 22cfcebf164478540b07948989551393, type: 2}
+  mashingGoal: 0
+  timeLimits: []
+  totalTimeLimit: 0
+  inputs: []
+  pointsPerHit: 0
+  progressBarSpeed: 0
+  myBoat: {fileID: 4288610825724832}
 --- !u!4 &7852995335437290984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2108998821004068833, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}

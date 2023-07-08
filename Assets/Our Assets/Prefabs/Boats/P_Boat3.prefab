@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 14.04
       objectReference: {fileID: 0}
+    - target: {fileID: 2165045795160722245, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: lure
+      value: 
+      objectReference: {fileID: 11400000, guid: 5f265a8833e588c48bd0fef91712e96b, type: 2}
     - target: {fileID: 4851961905999591638, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       propertyPath: m_Size.x
       value: 10.186908

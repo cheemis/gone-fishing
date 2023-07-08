@@ -25,6 +25,7 @@ public class FishingLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(start && start.transform && mid && mid.transform)
         mid.transform.position = new Vector3((start.position.x + end.position.x) / 2,
                                              midOffset,
                                              (start.position.z + end.position.z / 2));
