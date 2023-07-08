@@ -37,7 +37,6 @@ public class AudioManager : MonoBehaviour
         {
             _SFXVolume = value;
             PlayerPrefs.SetFloat("SFXVolume", value);
-            Debug.Log("SFX Volume set to " + value);
         }
     }
 
@@ -65,7 +64,6 @@ public class AudioManager : MonoBehaviour
         {
             _MusicVolume = value;
             PlayerPrefs.SetFloat("MusicVolume", value);
-            Debug.Log("SFX Volume set to " + value);
         }
     }
 

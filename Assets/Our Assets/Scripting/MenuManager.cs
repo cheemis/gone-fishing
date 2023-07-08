@@ -29,6 +29,9 @@ public class MenuManager : MonoBehaviour
         MainMenu.SetActive(false);
         CreditsMenu.SetActive(false);
         SettingsMenu.SetActive(true);
+        
+        SFXVolumeSlider.value = AudioManager.instance.SFXVolume;
+        MusicVolumeSlider.value = AudioManager.instance.MusicVolume;
     }
     
     public void OpenCreditsMenu()
