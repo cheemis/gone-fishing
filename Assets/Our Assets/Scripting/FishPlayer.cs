@@ -85,11 +85,20 @@ public class FishPlayer : MonoBehaviour
         }
     }
 
+    private void ResetAllTriggers(){
+        foreach (var param in animController.parameters){
+            if (param.type == AnimatorControllerParameterType.Trigger){
+                animController.ResetTrigger(param.name);
+            }
+        }
+    } 
+
     public void GameInput(InputAction.CallbackContext context) {
         FishMinigame fishGame = FishMinigame.instance; 
         if(fishGame != null){
             bool correct = fishGame.GameInput(context);
             animController.SetBool("Correct", correct);
+            ResetAllTriggers();
             switch (context.action.name[0]) {
                 case 'U':
                     animController.SetTrigger("Up");
