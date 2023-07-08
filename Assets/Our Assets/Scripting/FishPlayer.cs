@@ -15,6 +15,9 @@ public class FishPlayer : MonoBehaviour
     [SerializeField]
     private Animator animController;
 
+    [SerializeField]
+    private PlayerInput inputs;
+
     private Vector2 direction;
 
     public float strength;
@@ -54,6 +57,13 @@ public class FishPlayer : MonoBehaviour
 
     public void SetStruggle(bool struggle){
         animController.SetBool("Struggling", struggle);
+        if(struggle) {
+            inputs.currentActionMap = inputs.actions.FindActionMap("Fishing Minigame");
+            body.velocity = Vector2.zero;   
+        }
+        else {
+            inputs.currentActionMap = inputs.actions.FindActionMap("Player");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other){
@@ -76,6 +86,7 @@ public class FishPlayer : MonoBehaviour
         FishMinigame fishGame = FishMinigame.instance; 
         if(fishGame != null){
             bool correct = fishGame.GameInput(context);
+            animController.SetBool("Correct", correct);
             switch (context.action.name[0]) {
                 case 'U':
                     animController.SetTrigger("Up");
@@ -87,7 +98,7 @@ public class FishPlayer : MonoBehaviour
                     animController.SetTrigger("Right");
                     return;
                 case 'D':
-                    animController.SetTrigger("DOwn");
+                    animController.SetTrigger("Down");
                     return;
             }
         }   

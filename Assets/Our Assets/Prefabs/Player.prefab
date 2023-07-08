@@ -342,7 +342,7 @@ MonoBehaviour:
     m_ActionName: Fishing Minigame/Down[/Keyboard/s,/Keyboard/downArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Fishing Minigame
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &898344927185912354
@@ -360,8 +360,9 @@ MonoBehaviour:
   movementSpeed: 3
   turnStrength: 2
   body: {fileID: 4746510316960539855}
-  animController: {fileID: 0}
-  strength: 0
+  animController: {fileID: 6112051814872521137}
+  inputs: {fileID: 7579928197388312862}
+  strength: 1
 --- !u!95 &6112051814872521137
 Animator:
   serializedVersion: 5

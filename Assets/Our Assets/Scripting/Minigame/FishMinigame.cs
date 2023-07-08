@@ -50,10 +50,11 @@ public class FishMinigame : MonoBehaviour
             Debug.LogWarning("No Minigame set");
             return;
         }
-        if (!running) runGame.Invoke(newLure, newStrength);
+        if (!running) BeginRunningGame(newLure, newStrength);
     }
     
     public void BeginRunningGame(LureObject newLure, float newStrength) {
+        barGraphic.gameObject.SetActive(true);
         currentLure = newLure;
         barGraphic.ChangeColor(currentLure.inputs[stageIndex][0]);
         lastTime = 0;
@@ -79,9 +80,12 @@ public class FishMinigame : MonoBehaviour
     private void Update() {
         if (running) { //only when a minigame is ongoing
             lastTime += Time.deltaTime;
-            Debug.Log(lastTime);
+            //Debug.Log(lastTime);
+            barGraphic.inputRemainingPercent = (currentLure.timeLimits[stageIndex] - lastTime)/ currentLure.timeLimits[stageIndex] ;
+            barGraphic.curInput = currentLure.inputs[stageIndex];
             barGraphic.percentFull = inputCount / currentLure.mashingGoal;
             barGraphic.timeRemainingPercent = lastTime / currentLure.totalTimeLimit;
+            
             if (inputCount >= currentLure.mashingGoal) EndGame(true); //succeeded in completing the minigame
             
             else if (lastTime >= currentLure.timeLimits[stageIndex]) { //move to next timeLimit/stage
@@ -90,6 +94,7 @@ public class FishMinigame : MonoBehaviour
                 else {
                     // lastTime = 0;
                     stageIndex++;
+                    currentLure.timeLimits[stageIndex] += lastTime;
                     barGraphic.ChangeColor(currentLure.inputs[stageIndex][0]);
                 }
             }
@@ -97,8 +102,8 @@ public class FishMinigame : MonoBehaviour
     }
 
 	private void EndGame(bool success) {
-        Debug.Log(inputCount);
-        Debug.Log(pointsEarned);
+        //Debug.Log(inputCount);
+        //Debug.Log(pointsEarned);
         running = false;
         if (success) {
             Debug.Log("success");
@@ -106,11 +111,12 @@ public class FishMinigame : MonoBehaviour
             //give the worm spawner foodEarned
         }
         else {
-            Debug.Log(currentLure.totalTimeLimit);
+            //Debug.Log(currentLure.totalTimeLimit);
             // Debug.Log(currentLure.totalTimeLimit);
             Debug.Log("failure");
         }
         FishPlayer.instance.SetStruggle(false);
         Destroy(currentLure.gameObject);
+        barGraphic.gameObject.SetActive(false);
 	}
 }
