@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4623781878989833149
+--- !u!1001 &5956202632601409238
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bb7cbf066d945174cb9ace1e4494338a, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bb7cbf066d945174cb9ace1e4494338a, type: 3}
       propertyPath: m_LocalScale.x
@@ -46,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bb7cbf066d945174cb9ace1e4494338a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bb7cbf066d945174cb9ace1e4494338a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bb7cbf066d945174cb9ace1e4494338a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -73,10 +73,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb7cbf066d945174cb9ace1e4494338a, type: 3}
---- !u!4 &5161195964742935638 stripped
+--- !u!4 &6134491763631026493 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb7cbf066d945174cb9ace1e4494338a, type: 3}
-  m_PrefabInstance: {fileID: 4623781878989833149}
+  m_PrefabInstance: {fileID: 5956202632601409238}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8196510530263861769
 PrefabInstance:
@@ -90,9 +90,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Boat1
       objectReference: {fileID: 0}
+    - target: {fileID: 8192301290596379049, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: lureSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8224349267832765376, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8224349267832765376, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -139,7 +143,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2108998821004068833, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5161195964742935638}
+      addedObject: {fileID: 6134491763631026493}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
 --- !u!4 &7852995335437290984 stripped

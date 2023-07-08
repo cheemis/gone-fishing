@@ -9,10 +9,11 @@ public class BoatManager : MonoBehaviour
     private GameObject[] ships; //the index refers to the ships level
     [SerializeField]
     private Transform oceanSurface;
-    public Vector2 spawnDistance = new Vector2(30f, 60f);
-    public Vector2 spawnClamp = Vector2.zero;
+    public Vector2 spawnDistance = new Vector2(-60, 60f);
+    public Vector2 oceanClamp = new Vector2(-70, 70);
     public int maxShips = 3;
     private int numOfShips = 0;
+    private float lastPos = 0;
 
     [Space]
     [Space]
@@ -21,7 +22,10 @@ public class BoatManager : MonoBehaviour
     public GameObject player;
     //private PlayerController player;
     public float playerXP; //this will be removed and instead refer to player XP in the player class
+    public float distanceFromPlayer = 20f;
 
+    [Space]
+    [Space]
 
     //testinb variables
     public bool sendEvent = false;
@@ -71,8 +75,8 @@ public class BoatManager : MonoBehaviour
         //where to spawn the ship
         float xPos = 1;
         //check which shore it's farther from
-        float leftDistance = Mathf.Abs(player.transform.position.x - spawnClamp.y);
-        float rightDistance = Mathf.Abs(player.transform.position.x - spawnClamp.x);
+        float leftDistance = Mathf.Abs(player.transform.position.x - oceanClamp.y);
+        float rightDistance = Mathf.Abs(player.transform.position.x - oceanClamp.x);
 
         //chose which side of the player to spawn the new boat
         if (leftDistance - rightDistance < 15)
@@ -84,13 +88,25 @@ public class BoatManager : MonoBehaviour
             xPos = -1;
         }
 
-        //finalize spawn position
-        xPos = player.transform.position.x + xPos * Random.Range(spawnDistance.x,
-                                                                 spawnDistance.y);
-        xPos = Mathf.Clamp(xPos, spawnClamp.x, spawnClamp.y);
+        int loop = 0;
+
+        //make sure boat doesnt spawn too close to another spawned boat
+        while((xPos == 1 || xPos == -1 || Mathf.Abs(xPos - lastPos) < 10) && loop < 100)
+        {
+            //finalize spawn position
+            xPos = player.transform.position.x + xPos * distanceFromPlayer * Random.Range(spawnDistance.x,
+                                                                                          spawnDistance.y);
+            //Debug.Log("before clamp, xpos was " + xPos);
+            xPos = Mathf.Clamp(xPos, spawnDistance.x, spawnDistance.y);
+            //Debug.Log("xpos was " + xPos + ", pass? " + !(xPos == 1 || xPos == -1 || Mathf.Abs(xPos - lastPos) < 10));
+            loop++;
+        }
+        lastPos = xPos;
+
 
         Vector3 boatSpawnPos = new Vector3(xPos, oceanSurface.position.y, 0);
-        Instantiate(ships[shipIndex], boatSpawnPos, ships[shipIndex].transform.rotation);
+        GameObject newShip = Instantiate(ships[shipIndex], boatSpawnPos, ships[shipIndex].transform.rotation);
+        newShip.GetComponent<FishingBoat>().InstantiateBoat(oceanClamp, spawnDistance);
 
         numOfShips++;
     }

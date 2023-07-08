@@ -7,18 +7,36 @@ public class FishingBoat : MonoBehaviour
     //manager variables
     private BoatManager boatManager;
 
+    //floating variables
+    public float fishingSpeed = 5f;
+    private bool goingRight = true;
+    private Vector2 boatClamps = new Vector2(-30, 30); 
 
+    [Space]
+    [Space]
+    //spining variables
+    public float spinSpeed = 10f;
+    private float goalRot = 180;
+
+    [Space]
+    [Space]
     //sinking variables
     public float maxFallSpeed = 10f;
     public float fallAcceleration = 1f;
-    private float fallingSpeed = 0;
+    public float fallingSpeed = 0;
 
-    public Vector3 finalRotation = new Vector3(30, -10, 30);
+    [Space]
+    [Space]
+    //rotating variables
+    public float rotationAmount = 45f;
     public float rotationAcceleration = 1f;
+    private Transform boatAssets;
+    private FishingLine lure;
 
-
+    [Space]
+    [Space]
     //event management variables
-    public bool boatPulledUnder = false;
+    public string boatState = "fishing";
     public float despawnHeight = -20f;
 
 
@@ -26,33 +44,123 @@ public class FishingBoat : MonoBehaviour
     void Start()
     {
         boatManager = GameObject.Find("Boat Manager").GetComponent<BoatManager>();
+        boatAssets = transform.GetChild(0);
+        lure = GetComponentInChildren<FishingLine>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //for testing
-        if(boatPulledUnder)
+        switch(boatState)
         {
-            Sink();
+            case "fishing":
+                Fishing();
+                return;
+
+            case "spinning":
+                Spinning();
+                return;
+
+
+            case "fighting": //do nothing, fighting the fish (maybe force lure onto player here)
+                return;
+
+
+            case "sinking":
+                Sink();
+                return;
+
+            default:
+                boatState = "sinking"; //for testing purposes
+                return;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log(this.gameObject.name + " hit " + other.gameObject.name);
+        if (other.tag == "Boat" && boatState != "spinning" && boatState != "sinking")
+        {
+            boatState = "spinning";
+        }
+    }
+
+    public void InstantiateBoat(Vector2 oceanClamps, Vector2 spawnClamps)
+    {
+        //set clamps
+        boatClamps = new Vector2(Random.Range(oceanClamps.x, spawnClamps.x),
+                                 Random.Range(spawnClamps.y, oceanClamps.y));
+
+        //set speeds
+        fishingSpeed = Random.Range(.5f * fishingSpeed, 1.5f * fishingSpeed);
+        spinSpeed = Random.Range(.5f * spinSpeed, 1.5f * spinSpeed);
+
+
+        goingRight = Random.Range(0, 100) < 50 ? true : false;
+        if (goingRight)
+        {
+            goalRot = 180;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            goalRot = 0;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+    }
+
+
+    private void Fishing()
+    {
+        Vector3 dir = goingRight ? Vector3.right : Vector3.left;
+        transform.position += dir * fishingSpeed * Time.deltaTime;
+
+        float xPos = transform.position.x;
+        if((Mathf.Abs(xPos - boatClamps.x) < 1 && !goingRight) ||
+           (Mathf.Abs(xPos - boatClamps.y) < 1 && goingRight))
+        {
+            boatState = "spinning";
+            //disable lure;
+        }
+    }
+
+    private void Spinning()
+    {
+        transform.Rotate(Vector3.up * Time.deltaTime * spinSpeed);
+
+        if (Mathf.Abs(transform.rotation.eulerAngles.y - goalRot) < 1)
+        {
+            transform.rotation = Quaternion.Euler(0, goalRot, 0);
+            goalRot = goalRot == 0 ? 180 : 0;
+
+            goingRight = !goingRight;
+            boatState = "fishing";
+            //enable lure
+        }
+
     }
 
     private void Sink()
     {
         //falling down
-        fallingSpeed = fallingSpeed < maxFallSpeed ? fallingSpeed + fallAcceleration * Time.deltaTime : maxFallSpeed;
-        fallingSpeed *= Time.deltaTime;
+        fallingSpeed = fallingSpeed + fallAcceleration;
+        fallingSpeed = Mathf.Min(fallingSpeed, maxFallSpeed * Time.deltaTime);
+
         transform.position = new Vector3(transform.position.x,
                                          transform.position.y - fallingSpeed,
                                          transform.position.z);
 
-        //rotating down
-        if(Vector3.Distance(transform.rotation.eulerAngles, finalRotation) < 1)
+        //rotating the boat
+        if(rotationAmount > 1)
         {
-            transform.rotation = Quaternion.Euler(Vector3.Lerp(transform.rotation.eulerAngles,
-                                                               finalRotation,
-                                                               rotationAcceleration * Time.deltaTime));
+            float currentRot = (rotationAmount * Time.deltaTime)/rotationAcceleration;
+            float dir = goingRight ? -1 : 1;
+
+            boatAssets.Rotate(new Vector3(dir * currentRot, 0, dir * currentRot/2));
+            rotationAmount -= currentRot;
+
+            //sink lure
+            lure.midOffset -= fallingSpeed;
         }
 
         //despawn boat

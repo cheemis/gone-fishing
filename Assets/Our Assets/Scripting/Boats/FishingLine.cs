@@ -25,15 +25,15 @@ public class FishingLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mid.transform.position = new Vector3((start.transform.position.x + end.transform.position.x) / 2,
+        mid.transform.position = new Vector3((start.position.x + end.position.x) / 2,
                                              midOffset,
-                                             (start.transform.position.z + end.transform.position.z) / 2);
+                                             (start.position.z + end.position.z / 2));
         var pointList = new List<Vector3>();
 
         for (float ratio = 0; ratio <= 1; ratio += 1 / vertexCount)
         {
             var tangent1 = Vector3.Lerp(start.localPosition, mid.localPosition, ratio);
-            var tangent2 = Vector3.Lerp(mid.localPosition, end.localPosition, ratio);
+            var tangent2 = Vector3.Lerp(mid.localPosition, mid.parent.InverseTransformPoint(end.position), ratio);
             var curve = Vector3.Lerp(tangent1, tangent2, ratio);
 
             pointList.Add(curve);

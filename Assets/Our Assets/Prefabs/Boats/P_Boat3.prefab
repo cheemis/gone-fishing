@@ -8,9 +8,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 380721604866413335, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 380721604866413335, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551261244466191301, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851961905999591638, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: m_Size.x
+      value: 10.186908
+      objectReference: {fileID: 0}
+    - target: {fileID: 4851961905999591638, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: m_Center.x
+      value: -0.093453884
+      objectReference: {fileID: 0}
     - target: {fileID: 6290012383222135870, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       propertyPath: m_Name
       value: P_Boat3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8192301290596379049, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: fishingSpeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8224349267832765376, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       propertyPath: m_RootOrder
