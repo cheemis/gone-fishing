@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Events;
 
 public class FishPlayer : MonoBehaviour
 {   
@@ -12,18 +11,24 @@ public class FishPlayer : MonoBehaviour
     private float turnStrength;
     [SerializeField]
     private Rigidbody2D body;
+    
+    [SerializeField]
+    private Animator animController;
 
     private Vector2 direction;
 
     public float strength;
-    
-    public float points; //xp
-    
+
     void Awake(){
-        // body = this.gameObject.GetComponent<Rigidbody2D>();
-        // if(body == null){
-        //     Debug.LogError("No RigidBody2D on player");
-        // }
+        
+        if(animController == null){
+            animController = this.gameObject.GetComponent<Animator>();
+        }
+        
+        if(animController == null){
+            Debug.LogError("No Animator on player");
+        }
+        
     }
 
     void FixedUpdate(){
@@ -43,9 +48,14 @@ public class FishPlayer : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         //Debug.Log(other);
+        if(animController){
+            animController.SetTrigger("Eat");
+        }
         if(other.tag.Equals("Food")){
             Destroy(other.gameObject);
             strength++;
         }
     }
+
+
 }
