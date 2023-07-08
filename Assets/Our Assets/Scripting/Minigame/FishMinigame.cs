@@ -46,7 +46,11 @@ public class FishMinigame : MonoBehaviour
     }
 
     public void TryRunGame(MinigameBarObject newMinigameBar, float newStrength) {
-        if (!running) runGame.Invoke(newMinigameBar, 1f);
+        if(!newMinigameBar) {
+            Debug.LogWarning("No Minigame set");
+            return;
+        }
+        if (!running) runGame.Invoke(newMinigameBar, newStrength);
     }
     
     public void BeginRunningGame(MinigameBarObject newMinigameBar, float newStrength) {
@@ -59,56 +63,36 @@ public class FishMinigame : MonoBehaviour
         running = true;
     }
     
-    public void InputUp(InputAction.CallbackContext context) {
-        if (running && context.started)
-            if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
+    public bool GameInput(InputAction.CallbackContext context) {
+        bool correct = false;
+        if (running && context.started){
+            correct = context.action.name == currentMinigameBar.inputs[stageIndex];
+            if (correct) {
                 Debug.Log(context.action.name);
                 pointsEarned += currentMinigameBar.pointsPerHit;
                 inputCount += strength; // inputCount = inputCount + (1 * strength)
             }
-    }
-    
-    public void InputLeft(InputAction.CallbackContext context) {
-        if (running && context.started)
-            if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
-                Debug.Log(context.action.name);
-                pointsEarned += currentMinigameBar.pointsPerHit;
-                inputCount += strength;
-            }
-    }
-    
-    public void InputRight(InputAction.CallbackContext context) {
-        if (running && context.started)
-            if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
-                Debug.Log(context.action.name);
-                pointsEarned += currentMinigameBar.pointsPerHit;
-                inputCount += strength;
-            }
-    }
-    
-    public void InputDown(InputAction.CallbackContext context) {
-        if (running && context.started)
-            if (context.action.name == currentMinigameBar.inputs[stageIndex]) {
-                Debug.Log(context.action.name);
-                pointsEarned += currentMinigameBar.pointsPerHit;
-                inputCount += strength;
-            }
+        }
+        return correct;
     }
     
     private void Update() {
         if (running) { //only when a minigame is ongoing
             lastTime += Time.deltaTime;
-            Debug.Log(lastTime);
+            // Debug.Log(lastTime);
             barGraphic.percentFull = inputCount / currentMinigameBar.mashingGoal;
             barGraphic.timeRemainingPercent = lastTime / currentMinigameBar.totalTimeLimit;
+            barGraphic.inputRemainingPercent = (currentMinigameBar.timeLimits[stageIndex] - lastTime)/currentMinigameBar.timeLimits[stageIndex];
+            barGraphic.curInput = currentMinigameBar.inputs[stageIndex];
             if (inputCount >= currentMinigameBar.mashingGoal) EndGame(true); //succeeded in completing the minigame
             
             else if (lastTime >= currentMinigameBar.timeLimits[stageIndex]) { //move to next timeLimit/stage
-                if (stageIndex + 1 == currentMinigameBar.timeLimits.Length) 
+                if (stageIndex + 1 == currentMinigameBar.timeLimits.Count) 
                     EndGame(false); // failed to complete the minigame in time
                 else {
-                    lastTime = 0;
+                    // lastTime = 0;
                     stageIndex++;
+                    currentMinigameBar.timeLimits[stageIndex] += lastTime;
                     barGraphic.ChangeColor(currentMinigameBar.inputs[stageIndex][0]);
                 }
             }
@@ -125,8 +109,10 @@ public class FishMinigame : MonoBehaviour
             //give the worm spawner foodEarned
         }
         else {
-            Debug.Log(currentMinigameBar.totalTimeLimit);
+            // Debug.Log(currentMinigameBar.totalTimeLimit);
             Debug.Log("failure");
         }
+        FishPlayer.instance.SetStruggle(false);
+        Destroy(currentMinigameBar.gameObject);
 	}
 }

@@ -8,9 +8,9 @@ public class MinigameBarObject : MonoBehaviour
     [SerializeField]
     private MinigameBar minigameBar;
     public float mashingGoal; //0 ... 5
-    public float[] timeLimits; //0 ... 5
+    public List<float> timeLimits; //0 ... 5
     public float totalTimeLimit;
-    public string[] inputs;
+    public List<string> inputs;
     
     private static readonly string[] inputNames = {
         "Up", "Left", "Right", "Down"
@@ -29,15 +29,14 @@ public class MinigameBarObject : MonoBehaviour
 
         mashingGoal = minigameBar.mashingGoal;
         
-        totalTimeLimit = 0; 
-        foreach(float f in timeLimits) totalTimeLimit += f;
-        
         //setup timeLimits
         timeLimits = minigameBar.timeLimits;
-        if (timeLimits.Length > 1) 
-            for (int i = 0; i < timeLimits.Length; i++) 
-                timeLimits[i] = Random.Range(minigameBar.minTimeLimits[i], minigameBar.maxTimeLImits[i]);
+        // if (timeLimits.Count > 1) 
+        //     for (int i = 0; i < timeLimits.Count; i++) 
+        //         timeLimits[i] = Random.Range(minigameBar.minTimeLimits[i], minigameBar.maxTimeLImits[i]);
         
+        totalTimeLimit = 0; 
+        foreach(float f in timeLimits) {totalTimeLimit += f;}
         //randomly assign inputs
         RandomizeInputs();
         
@@ -45,11 +44,12 @@ public class MinigameBarObject : MonoBehaviour
         FishMinigame.instance.TryRunGame(this, 1f);
         //*/
     }
-    
+
+
     public void RandomizeInputs() {
-        inputs = new string[timeLimits.Length];
+        inputs = new List<string>();
         List<int> pickedNums = new List<int>();
-        for(int i = 0; i < timeLimits.Length; i++) {
+        for(int i = 0; i < timeLimits.Count; i++) {
             int num = Random.Range(0, inputNames.Length - 1); //pick a number. all numbers have associated input
             if (pickedNums.ToArray().Length >= 0 && pickedNums.ToArray().Length < inputNames.Length) { //if there are unique numbers not yet picked,
                 while (pickedNums.IndexOf(num) != -1) { //increment until a new unique number is found
@@ -57,7 +57,7 @@ public class MinigameBarObject : MonoBehaviour
                     num %= inputNames.Length; //stay in the array
                 }
                 pickedNums.Insert(0,num); //mark the number as not unique
-                inputs[i] = inputNames[num]; //assign the input
+                inputs.Add(inputNames[num]); //assign the input
             }
             else { //no unique numbers left to be picked
                 if (num == pickedNums[0]) { //if the number was picked twice in a row

@@ -18,9 +18,15 @@ public class FishPlayer : MonoBehaviour
     private Vector2 direction;
 
     public float strength;
+
+    public static FishPlayer instance;
     
     void Awake(){
-        
+        if (instance != null) {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
         if(animController == null){
             animController = this.gameObject.GetComponent<Animator>();
         }
@@ -44,7 +50,11 @@ public class FishPlayer : MonoBehaviour
             Debug.LogError("No RigidBody2D on player");
         }
         direction = context.ReadValue<Vector2>();
-    } 
+    }
+
+    public void SetStruggle(bool struggle){
+        animController.SetBool("Struggling", struggle);
+    }
 
     void OnTriggerEnter2D(Collider2D other){
         //Debug.Log(other);
@@ -55,7 +65,31 @@ public class FishPlayer : MonoBehaviour
             Destroy(other.gameObject);
             strength++;
         }
+        if(other.tag.Equals("Lure")){
+            SetStruggle(true);
+            MinigameBarObject game = other.GetComponent<MinigameBarObject>();
+            FishMinigame.instance.TryRunGame(game, strength);
+        }
     }
 
-
+    public void GameInput(InputAction.CallbackContext context) {
+        FishMinigame fishGame = FishMinigame.instance; 
+        if(fishGame != null){
+            bool correct = fishGame.GameInput(context);
+            switch (context.action.name[0]) {
+                case 'U':
+                    animController.SetTrigger("Up");
+                    return;
+                case 'L':
+                    animController.SetTrigger("Left");
+                    return;
+                case 'R':
+                    animController.SetTrigger("Right");
+                    return;
+                case 'D':
+                    animController.SetTrigger("DOwn");
+                    return;
+            }
+        }   
+    }
 }

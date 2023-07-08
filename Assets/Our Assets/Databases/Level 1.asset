@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac415bd645b10ff4ca4202cefbcb9b65, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  mashingGoal: 100
+  mashingGoal: 60
   timeLimits:
-  - 5
-  minTimeLimits: []
-  maxTimeLImits: []
-  totalTimeLimit: 100
+  - 2
+  - 3
+  - 2
   foodReward: 5
   pointsPerHit: 1

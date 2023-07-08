@@ -158,7 +158,7 @@ Camera:
   m_GameObject: {fileID: 35981800}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -223,6 +223,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1907435429110586680, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907435429110586680, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907435429110586680, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 108.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024852273535739777, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024852273535739777, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024852273535739777, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024852273535739777, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024852273535739777, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4178264138433507208, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
       propertyPath: m_Name
       value: Fish Minigame
@@ -310,6 +342,18 @@ PrefabInstance:
     - target: {fileID: 5627599821867218391, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767323601290396210, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767323601290396210, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942538190599738419, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8017416925547091594, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
       propertyPath: currentMinigameBar
