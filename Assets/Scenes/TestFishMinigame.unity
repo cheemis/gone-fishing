@@ -315,6 +315,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7222660124174644653, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_Color.a
+      value: 0.48235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222660124174644653, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222660124174644653, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222660124174644653, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8017416925547091594, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
       propertyPath: currentMinigameBar
       value: 

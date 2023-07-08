@@ -99,12 +99,11 @@ public class FishMinigame : MonoBehaviour
         if (running) { //only when a minigame is ongoing
             lastTime += Time.deltaTime;
             barGraphic.percentFull = inputCount / currentMinigameBar.mashingGoal;
+            barGraphic.timeRemainingPercent = lastTime / currentMinigameBar.totalTimeLimit;
             if (inputCount >= currentMinigameBar.mashingGoal) EndGame(true); //succeeded in completing the minigame
             
             else if (lastTime >= currentMinigameBar.timeLimits[stageIndex]) {
-                if (stageIndex + 1 == currentMinigameBar.timeLimits.Length) { // failed to complete the minigame in time
-                    EndGame(false);
-                }
+                if (stageIndex + 1 == currentMinigameBar.timeLimits.Length) EndGame(false); // failed to complete the minigame in time
                 else {
                     lastTime = 0;
                     stageIndex++;
