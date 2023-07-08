@@ -44,7 +44,7 @@ public class LureObject : MonoBehaviour
         RandomizeInputs();
         
         //*only uncomment for testing
-        FishMinigame.instance.TryRunGame(this, 1f);
+        //FishMinigame.instance.TryRunGame(this, 1f);
         //*/
     }
 
