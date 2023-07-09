@@ -33,8 +33,8 @@ public class Fisher : MonoBehaviour
         //pick a scream
         audioSrc.clip = screams[Random.Range(0,screams.Count - 1)];
         //modify the scream?
-        audioSrc.volume = fisherAudioVolume;
-        evilFishAudio.volume = evilFishAudioVolume;
+        audioSrc.volume = fisherAudioVolume * AudioManager.instance.SFXVolume;
+        evilFishAudio.volume = evilFishAudioVolume * AudioManager.instance.SFXVolume;
         
         audioSrc.Play();
         evilFishAudio.Play();
