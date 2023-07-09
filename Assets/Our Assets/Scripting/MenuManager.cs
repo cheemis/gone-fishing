@@ -32,6 +32,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
+        mainMenuMusic.Stop();
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
 
