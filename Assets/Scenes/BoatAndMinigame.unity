@@ -447,6 +447,11 @@ Transform:
   m_Father: {fileID: 280340714}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!95 &656578916 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4024303997049551939, guid: bb49d33861a6d0d4f8500e82fd612759, type: 3}
+  m_PrefabInstance: {fileID: 1622995674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,22 +811,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4377285286922480323, guid: bb49d33861a6d0d4f8500e82fd612759, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7799109467696871546, guid: bb49d33861a6d0d4f8500e82fd612759, type: 3}
-      propertyPath: m_Sprite
+    - target: {fileID: 8144081116741738278, guid: bb49d33861a6d0d4f8500e82fd612759, type: 3}
+      propertyPath: animController
       value: 
-      objectReference: {fileID: 21300000, guid: ec71ef6a759765240bf1073df9239562, type: 3}
-    - target: {fileID: 8897084950234313609, guid: bb49d33861a6d0d4f8500e82fd612759, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9108063243948312211, guid: bb49d33861a6d0d4f8500e82fd612759, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 656578916}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -40,6 +40,7 @@ public class FishPlayer : MonoBehaviour
 
     public static FishPlayer instance;
 
+    public Transform mouthPos;
     
     
     void Awake(){

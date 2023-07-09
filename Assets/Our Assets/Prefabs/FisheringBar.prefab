@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 6015155923414827205}
   - component: {fileID: 4176454043043797525}
   - component: {fileID: 1281902196961285225}
+  - component: {fileID: 6275377713081661196}
   m_Layer: 5
   m_Name: FisheringBar
   m_TagString: Untagged
@@ -289,10 +290,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0.1708132, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0.033422947, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.794, g: 0.7693798, b: 0, a: 1}
+  - {r: 0, g: 0.6434092, b: 0.745, a: 1}
+  - {r: 0.73, g: 0, b: 0.04634938, a: 1}
+  - {r: 0.12547934, g: 0.72300005, b: 0, a: 1}
   percentFull: 0
   timeRemainingPercent: 0
   statusColor: {r: 0.10196079, g: 0.65882355, b: 0.63529414, a: 1}
@@ -302,6 +303,28 @@ MonoBehaviour:
   timer: {fileID: 3260246617719384144}
   inputTimer: {fileID: 933280161489826613}
   currentInput: {fileID: 2506712455329603535}
+  animController: {fileID: 0}
+--- !u!95 &6275377713081661196
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2209572667917651420}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b91f567fc5db6cf4fad795903c2ac6ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2642514089316034388
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,8 +400,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -704,8 +727,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
