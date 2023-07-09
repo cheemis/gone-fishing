@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5602320087328297177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -307,6 +307,7 @@ MonoBehaviour:
   lure: {fileID: 2165045795160722245}
   boatState: fishing
   despawnHeight: -20
+  WaitingPostSpin: 0
 --- !u!65 &4851961905999591638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -326,8 +327,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9, y: 2, z: 2}
-  m_Center: {x: 0.5, y: 0.5, z: 0}
+  m_Size: {x: 9, y: 2, z: 2.5960584}
+  m_Center: {x: 0.5, y: 0.5, z: 2.9338996}
 --- !u!54 &8694123784554799320
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -417,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 1551261244466191301}
     - target: {fileID: 1583082447487506291, guid: b3a323de75439f843806a268b7956e78, type: 3}
       propertyPath: midOffset
-      value: -5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6905600081887232973, guid: b3a323de75439f843806a268b7956e78, type: 3}
       propertyPath: m_LocalScale.x

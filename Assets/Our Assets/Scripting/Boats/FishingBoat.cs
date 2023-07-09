@@ -41,6 +41,8 @@ public class FishingBoat : MonoBehaviour
     //event management variables
     public string boatState = "fishing";
     public float despawnHeight = -20f;
+    public bool WaitingPostSpin = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -81,11 +83,13 @@ public class FishingBoat : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(this.gameObject.name + " hit " + other.gameObject.name);
-        if (other.tag == "Boat" && boatState != "spinning" && boatState != "sinking")
+        if (other.tag == "Boat" && boatState == "fishing" && !WaitingPostSpin)
         {
             boatState = "spinning";
+            WaitingPostSpin = true;
         }
     }
+
 
     public void InstantiateBoat(Vector2 oceanClamps, Vector2 spawnClamps)
     {
@@ -128,7 +132,13 @@ public class FishingBoat : MonoBehaviour
 
     private void Spinning()
     {
-        transform.Rotate(Vector3.up * Time.deltaTime * spinSpeed);
+        Quaternion l = Quaternion.RotateTowards(transform.rotation,
+                                                Quaternion.Euler(0, -goalRot, 0),
+                                                spinSpeed * Time.deltaTime);
+
+        Debug.Log("l: " + l);
+
+        transform.rotation = l;
 
         if (Mathf.Abs(transform.rotation.eulerAngles.y - goalRot) < 1)
         {
@@ -137,6 +147,7 @@ public class FishingBoat : MonoBehaviour
 
             goingRight = !goingRight;
             boatState = "fishing";
+            StartCoroutine(WaitSpin());
             lure.gameObject.SetActive(true);
         }
 
@@ -179,5 +190,12 @@ public class FishingBoat : MonoBehaviour
         
         yield return new WaitForSeconds(3f);
         lure.gameObject.SetActive(true);
+    }
+
+    public IEnumerator WaitSpin()
+    {
+        yield return new WaitForSeconds(15f);
+        lure.gameObject.SetActive(true);
+        WaitingPostSpin = false;
     }
 }
