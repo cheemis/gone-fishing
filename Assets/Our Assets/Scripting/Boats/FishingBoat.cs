@@ -43,14 +43,12 @@ public class FishingBoat : MonoBehaviour
     public float despawnHeight = -20f;
     public bool WaitingPostSpin = false;
     
-    [SerializeField]
-    private AudioClip boatSink;
+    public AudioClip boatSink;
     
-    [SerializeField]
-    private AudioClip boatFloat;
+    public AudioClip boatFloat;
 
     [SerializeField]
-    private AudioSource audioSource;
+    internal AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +56,7 @@ public class FishingBoat : MonoBehaviour
         boatManager = GameObject.Find("Boat Manager").GetComponent<BoatManager>();
         boatAssets = transform.GetChild(0);
         line = GetComponentInChildren<FishingLine>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -124,6 +123,10 @@ public class FishingBoat : MonoBehaviour
             goalRot = 0;
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+        
+        audioSource.clip = boatFloat;
+        audioSource.loop = true;
+        audioSource.Play();
     }
 
 

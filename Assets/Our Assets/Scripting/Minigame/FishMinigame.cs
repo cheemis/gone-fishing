@@ -115,6 +115,10 @@ public class FishMinigame : MonoBehaviour
             // Debug.Log("success");
             //give player points
             //give the worm spawner foodEarned
+            currentLure.myBoat.audioSource.Stop();
+            currentLure.myBoat.audioSource.clip = currentLure.myBoat.boatSink;
+            currentLure.myBoat.audioSource.loop = false;
+            currentLure.myBoat.audioSource.Play();
             currentLure.myBoat.boatState = "sinking";
             Instantiate(currentLure.Fisherman, currentLure.myBoat.transform.position+Vector3.down*3f, currentLure.Fisherman.transform.rotation);
             Instantiate(currentLure.WormSpawn, currentLure.transform.position, currentLure.WormSpawn.transform.rotation);

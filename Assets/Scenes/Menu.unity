@@ -3440,7 +3440,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3554,9 +3554,9 @@ MonoBehaviour:
   MainMenu: {fileID: 877127058}
   SettingsMenu: {fileID: 326294021}
   CreditsMenu: {fileID: 853066283}
-  mainCamera: {fileID: 1612085336}
   SFXVolumeSlider: {fileID: 104407046}
   MusicVolumeSlider: {fileID: 687777425}
+  mainMenuMusic: {fileID: 1885896881}
   gameSceneName: BoatAndMinigame
 --- !u!4 &1891881113
 Transform:

@@ -15,7 +15,18 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Slider SFXVolumeSlider; 
     [SerializeField] private Slider MusicVolumeSlider;
     
+    [SerializeField]
+    private AudioSource mainMenuMusic;
+    
     public string gameSceneName = "Main";
+    
+    private void Start() {
+        if (mainMenuMusic == null) {
+            Debug.Log("no main menu music source assigned!");
+        }
+        
+        mainMenuMusic.PlayDelayed(1);
+    }
 
     #region Button Methods
 
