@@ -163,6 +163,7 @@ MonoBehaviour:
   player: {fileID: 1890670760}
   playerXP: 1
   distanceFromPlayer: 5
+  currentBoats: []
   sendEvent: 1
 --- !u!4 &138692959
 Transform:

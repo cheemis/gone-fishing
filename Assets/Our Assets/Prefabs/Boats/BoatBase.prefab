@@ -410,7 +410,7 @@ MonoBehaviour:
   rotationAcceleration: 5
   lure: {fileID: 2165045795160722245}
   boatState: fishing
-  despawnHeight: -20
+  despawnHeight: -3.5
   WaitingPostSpin: 0
   boatSink: {fileID: 8300000, guid: 3e3eccb3ebd71404f9ab14f7d571613a, type: 3}
   boatFloat: {fileID: 8300000, guid: 528c8003acb50e5418dd2cad28d26234, type: 3}

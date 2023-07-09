@@ -101,6 +101,9 @@ public class FishingBoat : MonoBehaviour
 
     public void InstantiateBoat(Vector2 oceanClamps, Vector2 spawnClamps)
     {
+        //debug
+        this.gameObject.name = "boat " + Random.Range(0, 1000);
+
         //set clamps
         boatClamps = new Vector2(Random.Range(oceanClamps.x, spawnClamps.x),
                                  Random.Range(spawnClamps.y, oceanClamps.y));
@@ -189,7 +192,7 @@ public class FishingBoat : MonoBehaviour
         //despawn boat
         if(transform.position.y < despawnHeight)
         {
-            boatManager.RemoveShip();
+            boatManager.RemoveShip(this.gameObject);
             Destroy(this.gameObject);
         }
     }

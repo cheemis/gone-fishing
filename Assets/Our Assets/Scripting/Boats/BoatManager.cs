@@ -12,7 +12,7 @@ public class BoatManager : MonoBehaviour
     public Vector2 spawnDistance = new Vector2(-60, 60f);
     public Vector2 oceanClamp = new Vector2(-70, 70);
     public int maxShips = 3;
-    private int numOfShips = 0;
+    public int numOfShips = 0;
 
     [Space]
     [Space]
@@ -24,8 +24,7 @@ public class BoatManager : MonoBehaviour
     public float distanceFromPlayer = 20f;
 
     //fixing variables (send help)
-    private float[] lastPositions = new float[10];
-    private int positionIdex = 0;
+    public List<GameObject> currentBoats = new List<GameObject>();
 
 
 
@@ -78,7 +77,8 @@ public class BoatManager : MonoBehaviour
         int shipIndex = Mathf.Clamp(randomRange, 0, ships.Length - 1);
         //Debug.Log(shipIndex);
         //where to spawn the ship
-        float xPos = 1;
+        
+        float dir = 1;
         //check which shore it's farther from
         float leftDistance = Mathf.Abs(player.transform.position.x - oceanClamp.y);
         float rightDistance = Mathf.Abs(player.transform.position.x - oceanClamp.x);
@@ -86,13 +86,14 @@ public class BoatManager : MonoBehaviour
         //chose which side of the player to spawn the new boat
         if (leftDistance - rightDistance < 15)
         {
-            xPos = Random.Range(0, 100) < 50 ? -1:1;
+            dir = Random.Range(0, 100) < 50 ? -1:1;
         }
         else if(leftDistance > rightDistance)
         {
-            xPos = -1;
+            dir = -1;
         }
 
+        float xPos = 0;
         int loop = 0;
         bool nearLast = true;
 
@@ -100,8 +101,8 @@ public class BoatManager : MonoBehaviour
         while(nearLast && loop < 100)
         {
             //finalize spawn position
-            xPos = distanceFromPlayer + xPos * Random.Range(player.transform.position.x,
-                                                            spawnDistance.y);
+            xPos = Random.Range(player.transform.position.x + (dir * distanceFromPlayer),
+                                dir * spawnDistance.y);
 
             //Debug.Log("random xpos found: " + xPos);
 
@@ -110,9 +111,9 @@ public class BoatManager : MonoBehaviour
             //Debug.Log("random xpos post clamp: " + xPos);
 
             nearLast = false;
-            for(int i = 0; i < lastPositions.Length; i++)
+            for(int i = 0; i < currentBoats.Count; i++)
             {
-                if(Mathf.Abs(lastPositions[i] - xPos) < 10)
+                if(Mathf.Abs(currentBoats[i].transform.position.x - xPos) < 10)
                 {
                     nearLast = true;
                     break;
@@ -124,13 +125,14 @@ public class BoatManager : MonoBehaviour
         if (!nearLast) Debug.Log("found distant xpos: " + xPos);
         else Debug.Log("did NOT find proper xpos: " + xPos);
 
-        lastPositions[positionIdex] = xPos;
-        positionIdex = (positionIdex + 1) % lastPositions.Length;
+        
 
 
         Vector3 boatSpawnPos = new Vector3(xPos, oceanSurface.position.y, 0);
         GameObject newShip = Instantiate(ships[shipIndex], boatSpawnPos, ships[shipIndex].transform.rotation);
         newShip.GetComponent<FishingBoat>().InstantiateBoat(oceanClamp, spawnDistance);
+
+        currentBoats.Add(newShip);
 
         numOfShips++;
     }
@@ -139,7 +141,7 @@ public class BoatManager : MonoBehaviour
     /* This method removes a ship from
      * the counter And changes the max
      * ships in the ocean if needed. */
-    public void RemoveShip()
+    public void RemoveShip(GameObject deadBoat)
     {
         //hard coded that the max num of ships caps out at 15
         if(maxShips < 15 && maxShips + 1 < playerXP)
@@ -147,6 +149,9 @@ public class BoatManager : MonoBehaviour
             maxShips++;
         }
         numOfShips--;
+
+        currentBoats.Remove(deadBoat);
+
         AddShips();
     }
 }
