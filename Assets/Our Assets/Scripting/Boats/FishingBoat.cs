@@ -47,6 +47,8 @@ public class FishingBoat : MonoBehaviour
     
     public AudioClip boatFloat;
 
+    private float floatBaseVolume;
+
     [SerializeField]
     internal AudioSource audioSource;
 
@@ -124,9 +126,12 @@ public class FishingBoat : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         
+        floatBaseVolume = audioSource.volume;
+        
         audioSource.clip = boatFloat;
         audioSource.loop = true;
         audioSource.Play();
+        audioSource.volume = AudioManager.instance.SFXVolume * floatBaseVolume;
     }
 
 
