@@ -29,21 +29,6 @@ public class AudioManager : MonoBehaviour
         //_nextMusicSource.volume = MusicVolume;
     }
 
-    private void Update()
-    {
-        //UpdateMusic();
-
-        if (Input.GetKey(KeyCode.T))
-        {
-            PlayMusic(gameMusic);
-        }
-
-        if (Input.GetKey(KeyCode.Y))
-        {
-            PlayMusic(pullingMusic);
-        }
-    }
-
     #region SFXs
 
     private float _SFXVolume = 0.8f;
@@ -56,18 +41,18 @@ public class AudioManager : MonoBehaviour
             PlayerPrefs.SetFloat("SFXVolume", value);
         }
     }
-
-    public void PlaySFX(AudioClip clip, Vector3? pos = null)
-    {
-        if (pos != null)
-        {
-            AudioSource.PlayClipAtPoint(clip, pos.Value);
-        }
-        else
-        {
-            AudioSource.PlayClipAtPoint(clip, Camera.current.transform.position);
-        }
-    }
+    
+    //public void PlaySFX2D(AudioClip clip, Vector3? pos = null)
+    //{
+    //    if (pos != null)
+    //    {
+    //        AudioSource.PlayClipAtPoint(clip, pos.Value, SFXVolume);
+    //    }
+    //    else
+    //    {
+    //        AudioSource.Play(clip, SFXVolume);
+    //    }
+    //}
     
     #endregion
 

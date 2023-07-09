@@ -28,6 +28,12 @@ public class FishPlayer : MonoBehaviour
     private SpriteRenderer sprite;
 
     public Transform spriteTransform;
+    
+    [SerializeField]
+    private AudioSource chompAudioSource;
+
+    [SerializeField] 
+    private AudioClip chompAudioClip;
 
 
     private Vector2 direction;
@@ -107,6 +113,9 @@ public class FishPlayer : MonoBehaviour
             strength+=other.GetComponent<Food>().power;
             body.AddForce(dashSpeed*transform.up, ForceMode2D.Impulse);
             FishMinigame.instance.strengthUI.ping = true;
+            chompAudioSource.pitch = Random.Range(0.9f, 1.1f);
+            chompAudioSource.volume = AudioManager.instance.SFXVolume;
+            chompAudioSource.PlayOneShot(chompAudioClip);
         }
         if(other.tag.Equals("Lure")){
             SetStruggle(true);

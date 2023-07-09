@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: TransitionParticles
+    uniqueID: 25067965
+    locked: 0
