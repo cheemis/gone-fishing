@@ -17,6 +17,9 @@ public class Fisher : MonoBehaviour
     [Range(0, 1)]
     private float evilFishAudioVolume = 0.5f;
     
+    [SerializeField]
+    private float despawnHeight;
+    
     private void Start() {
         if (screams.Count == 0) {
             Debug.LogWarning("No screams assigned to the fisher guy!");
@@ -37,6 +40,11 @@ public class Fisher : MonoBehaviour
         evilFishAudio.Play();
     }
     
+    private void LateUpdate() {
+        if (gameObject.transform.position.y <= despawnHeight) {
+            Destroy(gameObject);
+        }
+    }
 
     
     private void OnDestroy() {
