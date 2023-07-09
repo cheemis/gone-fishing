@@ -18,14 +18,29 @@ public class FishPlayer : MonoBehaviour
     [SerializeField]
     private PlayerInput inputs;
 
+    [SerializeField]
+    private float dashSpeed;
+
+    [SerializeField]
+    private float dashCooldown;
+
+    [SerializeField]
+    private SpriteRenderer sprite;
+
     public Transform spriteTransform;
 
 
     private Vector2 direction;
+    
+    private bool push;
 
+    private bool allowPush;
+    
     public float strength;
 
     public static FishPlayer instance;
+
+    
     
     void Awake(){
         if (instance != null) {
@@ -40,6 +55,7 @@ public class FishPlayer : MonoBehaviour
         if(animController == null){
             Debug.LogError("No Animator on player");
         }
+        allowPush = true;
         
     }
 
@@ -47,15 +63,26 @@ public class FishPlayer : MonoBehaviour
         if(body){
             body.AddTorque(-direction.x*turnStrength, ForceMode2D.Force);
             body.AddForce(direction.y*movementSpeed*transform.up, ForceMode2D.Force);
+            if(allowPush && Mathf.Abs(direction.y) > 0){ //push &&
+                body.AddForce(direction.y*dashSpeed*transform.up, ForceMode2D.Impulse);
+                StartCoroutine(waitPush());
+            }
         }
     }
+    
 
+    private IEnumerator waitPush(){
+        allowPush = false;
+        animController.SetTrigger("Swim");
+        yield return new WaitForSeconds(dashCooldown);
+        allowPush = true;
+    }
     public void PlayerMove(InputAction.CallbackContext context){
-        // Debug.Log("MOVING");
-        if(body == null){
-            Debug.LogError("No RigidBody2D on player");
-        }
         direction = context.ReadValue<Vector2>();
+    }
+
+    public void PlayerDash(InputAction.CallbackContext context){
+        push = context.ReadValueAsButton();
     }
 
     public void SetStruggle(bool struggle){

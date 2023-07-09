@@ -233,7 +233,19 @@ MonoBehaviour:
     m_ActionId: 299efaba-a54c-4d75-9c65-c383252b552f
     m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 898344927185912354}
+        m_TargetAssemblyTypeName: FishPlayer, Assembly-CSharp
+        m_MethodName: PlayerDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 01450c15-6468-47a7-8a04-adb59e87b080
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -362,6 +374,9 @@ MonoBehaviour:
   body: {fileID: 4746510316960539855}
   animController: {fileID: 6112051814872521137}
   inputs: {fileID: 7579928197388312862}
+  dashSpeed: 2
+  dashCooldown: 1
+  sprite: {fileID: 2113942186827085314}
   spriteTransform: {fileID: 4377285286922480323}
   strength: 1
 --- !u!95 &6112051814872521137
@@ -619,6 +634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fish Minigame
       objectReference: {fileID: 0}
+    - target: {fileID: 5039843849252302536, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ec71ef6a759765240bf1073df9239562, type: 3}
     - target: {fileID: 5627599821867218391, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
