@@ -159,7 +159,8 @@ MonoBehaviour:
   oceanSurface: {fileID: 1838910711}
   spawnDistance: {x: -75, y: 75}
   oceanClamp: {x: -80, y: 80}
-  maxShips: 15
+  maxShips: 1
+  numOfShips: 0
   player: {fileID: 1890670760}
   playerXP: 1
   distanceFromPlayer: 5

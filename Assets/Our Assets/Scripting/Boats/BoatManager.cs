@@ -26,14 +26,19 @@ public class BoatManager : MonoBehaviour
     //fixing variables (send help)
     public List<GameObject> currentBoats = new List<GameObject>();
 
-
-
     [Space]
     [Space]
 
     //testinb variables
     public bool sendEvent = false;
     private bool eventSent = false;
+
+    [Space]
+    [Space]
+
+    //game over management
+    private int upperLimitOfShips = 10;
+    private bool reachedUpperLimit = false;
 
 
 
@@ -143,15 +148,34 @@ public class BoatManager : MonoBehaviour
      * ships in the ocean if needed. */
     public void RemoveShip(GameObject deadBoat)
     {
-        //hard coded that the max num of ships caps out at 15
-        if(maxShips < 15 && maxShips + 1 < playerXP)
+        if(!reachedUpperLimit)
         {
-            maxShips++;
+            if (maxShips < upperLimitOfShips && (maxShips/2 + 1) < FishPlayer.instance.strength)
+            {
+                maxShips++;
+            }
         }
-        numOfShips--;
+        else
+        {
+            maxShips--;
+        }
 
-        currentBoats.Remove(deadBoat);
 
-        AddShips();
+
+
+        if(maxShips <= 0)
+        {
+            //end the game
+            Debug.Log("game won");
+        }
+        else
+        {
+            numOfShips--;
+
+            currentBoats.Remove(deadBoat);
+
+            AddShips();
+        }
+        
     }
 }
