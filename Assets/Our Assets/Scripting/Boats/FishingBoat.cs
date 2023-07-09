@@ -42,7 +42,15 @@ public class FishingBoat : MonoBehaviour
     public string boatState = "fishing";
     public float despawnHeight = -20f;
     public bool WaitingPostSpin = false;
+    
+    [SerializeField]
+    private AudioClip boatSink;
+    
+    [SerializeField]
+    private AudioClip boatFloat;
 
+    [SerializeField]
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
