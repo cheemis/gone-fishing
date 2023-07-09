@@ -26,6 +26,8 @@ public class FishMinigame : MonoBehaviour
     [SerializeField]
     private UnityEvent<LureObject, float> runGame;
 
+    public StrengthController strengthUI;
+
     private float phaseChange = 0;
     private float startPhase = 0;
 
@@ -66,7 +68,7 @@ public class FishMinigame : MonoBehaviour
         inputCount = 0;
         startPhase = 0;
         phaseChange = currentLure.timeLimits[0];
-        strength = newStrength;
+        // strength = newStrength;
         running = true;
     }
     
@@ -85,6 +87,7 @@ public class FishMinigame : MonoBehaviour
     }
     
     private void Update() {
+        strength = FishPlayer.instance.strength;
         barGraphic.gameObject.SetActive(running);
         if(running){
             currentLure.transform.position = FishPlayer.instance.mouthPos.position;
@@ -105,6 +108,8 @@ public class FishMinigame : MonoBehaviour
             barGraphic.percentFull = inputCount / currentLure.mashingGoal;
             barGraphic.timeRemainingPercent = countTime / currentLure.totalTimeLimit;
         }
+        strengthUI.strength = strength;
+        
     }
 
 	private void EndGame(bool success) {

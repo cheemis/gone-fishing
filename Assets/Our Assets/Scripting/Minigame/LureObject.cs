@@ -30,7 +30,7 @@ public class LureObject : MonoBehaviour
             Debug.Log("lure is not assigned!");
         }
         
-        Fisherman = lure.Fisherman;
+        Fisherman = lure.Fishermen[Random.Range(0, lure.Fishermen.Count-1)];
         WormSpawn = lure.WormSpawn;
         pointsPerHit = lure.pointsPerHit;
 

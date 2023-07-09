@@ -15,7 +15,8 @@ public class WormSpawn : MonoBehaviour
         for(int i = 0; i < count; i++) {
             Vector3 randomPos = (transform.position + new Vector3(Random.Range(-maxDistance/2f,maxDistance/2f), Random.Range(-maxDistance/2f,maxDistance/2f), 0));
             Quaternion randomRotation = Quaternion.Euler(0,0, Random.Range(0,360));
-            Instantiate(Food, randomPos, randomRotation);
+            GameObject cur = Instantiate(Food, gameObject.transform.position, randomRotation);
+            cur.GetComponent<Food>().targetPos = randomPos;
         }
         Destroy(this.gameObject);
     }

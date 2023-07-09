@@ -605,7 +605,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: caa3edfb35d7c0f498865e6c3b61f540, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -728,46 +728,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2704293938040425706}
     m_Modifications:
-    - target: {fileID: 1907435429110586680, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907435429110586680, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907435429110586680, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 108.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4024852273535739777, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4024852273535739777, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4024852273535739777, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4024852273535739777, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4024852273535739777, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4178264138433507208, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
       propertyPath: m_Name
       value: Fish Minigame
       objectReference: {fileID: 0}
-    - target: {fileID: 5039843849252302536, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ec71ef6a759765240bf1073df9239562, type: 3}
     - target: {fileID: 5627599821867218391, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -851,26 +815,6 @@ PrefabInstance:
     - target: {fileID: 5627599821867218391, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5959903214422418747, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6317222864328003617, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767323601290396210, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_fontSize
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767323601290396210, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7942538190599738419, guid: 8b149edb741c4444f91a155dabd5801c, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -106,6 +106,7 @@ public class FishPlayer : MonoBehaviour
             Destroy(other.gameObject);
             strength+=other.GetComponent<Food>().power;
             body.AddForce(dashSpeed*transform.up, ForceMode2D.Impulse);
+            FishMinigame.instance.strengthUI.ping = true;
         }
         if(other.tag.Equals("Lure")){
             SetStruggle(true);
