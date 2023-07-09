@@ -138,6 +138,7 @@ public class FishingBoat : MonoBehaviour
         audioSource.clip = boatFloat;
         audioSource.loop = true;
         audioSource.Play();
+        audioSource.time = Random.Range(0, audioSource.clip.length);
         audioSource.volume = AudioManager.instance.SFXVolume * floatBaseVolume;
     }
 
