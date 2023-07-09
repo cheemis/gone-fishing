@@ -122,7 +122,6 @@ public class FishMinigame : MonoBehaviour
             // Debug.Log("success");
             //give player points
             //give the worm spawner foodEarned
-            AudioManager.instance.PlayMusic(AudioManager.instance.gameMusic);
             currentLure.gameObject.GetComponent<AudioSource>().Stop();
             currentLure.myBoat.audioSource.Stop();
             currentLure.myBoat.audioSource.clip = currentLure.myBoat.boatSink;
@@ -139,6 +138,7 @@ public class FishMinigame : MonoBehaviour
             currentLure.myBoat.boatState = "fishing";
             StartCoroutine(currentLure.myBoat.waitLure());
         }
+        AudioManager.instance.PlayMusic(AudioManager.instance.gameMusic);
         FishPlayer.instance.SetStruggle(false);
         currentLure.gameObject.SetActive(false);
         barGraphic.gameObject.SetActive(false);

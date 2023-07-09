@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -14,7 +15,13 @@ public class MenuManager : MonoBehaviour
     
     [SerializeField] private Slider SFXVolumeSlider; 
     [SerializeField] private Slider MusicVolumeSlider;
-
+    
+    [Space]
+    
+    [SerializeField] private GameObject TransitionOutAnimation;
+    [SerializeField] private AudioSource MenuSFXSource;
+    [SerializeField] private AudioClip TransitionOutAudioClip;
+    
     public string gameSceneName = "Main";
     
     private void Start() {
@@ -25,9 +32,20 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
+        TransitionOutAnimation.SetActive(true);
+        
+        MenuSFXSource.volume = AudioManager.instance.SFXVolume;
+        MenuSFXSource.PlayOneShot(TransitionOutAudioClip);
+
+        Invoke(nameof(LoadGame), 3.8f);
+    }
+    
+    private void LoadGame()
+    {
         AudioManager.instance.PlayMusic(AudioManager.instance.gameMusic);
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
+    
 
     public void OpenSettingsMenu()
     {
