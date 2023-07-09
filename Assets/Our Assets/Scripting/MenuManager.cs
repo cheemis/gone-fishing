@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
             Debug.Log("no main menu music source assigned!");
         }
         
-        mainMenuMusic.PlayDelayed(1);
+        mainMenuMusic.PlayDelayed(0.5f);
     }
 
     #region Button Methods

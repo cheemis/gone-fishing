@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 3871577724201577039}
   - component: {fileID: 3310028991475808769}
   - component: {fileID: 4133977815179410584}
+  - component: {fileID: 7436684455234671540}
   m_Layer: 0
   m_Name: FishGuy
   m_TagString: Untagged
@@ -405,6 +406,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7436684455234671540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915341761769767957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c544e49093c5f479096ab2b537ce68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screams:
+  - {fileID: 8300000, guid: 2a2d0d248bbcbfe45ae2629ae60f1c97, type: 3}
+  - {fileID: 8300000, guid: 26c4beddf3d3dc74380c25f3ce4f94ba, type: 3}
+  - {fileID: 8300000, guid: 510df323770e2824f99a4deadf57e30d, type: 3}
+  - {fileID: 8300000, guid: 4f4b28637fa39f74d9fd14282867a77f, type: 3}
+  - {fileID: 8300000, guid: d8b507846ece53649921670d754f99f2, type: 3}
+  - {fileID: 8300000, guid: d8b507846ece53649921670d754f99f2, type: 3}
+  audioSrc: {fileID: 4133977815179410584}
+  evilFishAudio: {fileID: 6764759934567227051}
+  fisherAudioVolume: 0.5
+  evilFishAudioVolume: 0.5
 --- !u!1 &3201289217085613860
 GameObject:
   m_ObjectHideFlags: 0
