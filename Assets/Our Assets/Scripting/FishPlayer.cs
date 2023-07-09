@@ -65,7 +65,7 @@ public class FishPlayer : MonoBehaviour
             body.AddTorque(-direction.x*turnStrength, ForceMode2D.Force);
             body.AddForce(direction.y*movementSpeed*transform.up, ForceMode2D.Force);
             if(allowPush && Mathf.Abs(direction.y) > 0){ //push &&
-                body.AddForce(direction.y*dashSpeed*transform.up, ForceMode2D.Impulse);
+                body.AddForce(0.5f*direction.y*dashSpeed*transform.up, ForceMode2D.Impulse);
                 StartCoroutine(waitPush());
             }
         }
@@ -105,6 +105,7 @@ public class FishPlayer : MonoBehaviour
         if(other.tag.Equals("Food")){
             Destroy(other.gameObject);
             strength+=other.GetComponent<Food>().power;
+            body.AddForce(dashSpeed*transform.up, ForceMode2D.Impulse);
         }
         if(other.tag.Equals("Lure")){
             SetStruggle(true);
