@@ -90,7 +90,7 @@ public class FishPlayer : MonoBehaviour
         animController.SetBool("Struggling", struggle);
         if(struggle) {
             inputs.currentActionMap = inputs.actions.FindActionMap("Fishing Minigame");
-            body.velocity = Vector2.zero;   
+            body.velocity = Vector2.zero;
         }
         else {
             inputs.currentActionMap = inputs.actions.FindActionMap("Player");

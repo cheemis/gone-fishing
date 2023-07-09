@@ -69,6 +69,7 @@ public class FishMinigame : MonoBehaviour
         startPhase = 0;
         phaseChange = currentLure.timeLimits[0];
         // strength = newStrength;
+        currentLure.gameObject.GetComponent<AudioSource>().Play();
         running = true;
     }
     
@@ -120,6 +121,7 @@ public class FishMinigame : MonoBehaviour
             // Debug.Log("success");
             //give player points
             //give the worm spawner foodEarned
+            currentLure.gameObject.GetComponent<AudioSource>().Stop();
             currentLure.myBoat.audioSource.Stop();
             currentLure.myBoat.audioSource.clip = currentLure.myBoat.boatSink;
             currentLure.myBoat.audioSource.loop = false;
