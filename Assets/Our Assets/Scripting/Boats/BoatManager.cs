@@ -122,8 +122,8 @@ public class BoatManager : MonoBehaviour
             loop++;
         }
 
-        if (!nearLast) Debug.Log("found distant xpos: " + xPos);
-        else Debug.Log("did NOT find proper xpos: " + xPos);
+        // if (!nearLast) Debug.Log("found distant xpos: " + xPos);
+        // else Debug.Log("did NOT find proper xpos: " + xPos);
 
         
 
