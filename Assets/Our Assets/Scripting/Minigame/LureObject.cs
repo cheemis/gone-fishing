@@ -72,7 +72,7 @@ public class LureObject : MonoBehaviour
                     num %= inputNames.Length; //stay in the array
                 }
                 pickedNums[0] = num; //mark the number as most recently used
-                inputs[i] = inputNames[num];
+                inputs.Add(inputNames[num]);
             }
             
         }

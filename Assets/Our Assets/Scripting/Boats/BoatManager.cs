@@ -70,8 +70,8 @@ public class BoatManager : MonoBehaviour
     {
         //which ship to spawn
         int randomRange = Random.Range((int)(FishPlayer.instance.strength - 2), (int)(FishPlayer.instance.strength + 1 ));
-        int shipIndex = (int)Mathf.Clamp(randomRange, 0, ships.Length - 1);
-
+        int shipIndex = Mathf.Clamp(randomRange, 0, ships.Length - 1);
+        //Debug.Log(shipIndex);
         //where to spawn the ship
         float xPos = 1;
         //check which shore it's farther from

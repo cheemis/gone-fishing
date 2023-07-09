@@ -244,6 +244,8 @@ MonoBehaviour:
   timeLimits: []
   totalTimeLimit: 0
   inputs: []
+  Fisherman: {fileID: 0}
+  WormSpawn: {fileID: 0}
   pointsPerHit: 0
   progressBarSpeed: 0
   myBoat: {fileID: 8192301290596379049}
@@ -296,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingSpeed: 1
-  spinSpeed: 15
+  spinSpeed: 60
   maxFallSpeed: 0.5
   fallAcceleration: 0.25
   fallingSpeed: 0
@@ -304,8 +306,6 @@ MonoBehaviour:
   rotationAcceleration: 5
   boatState: fishing
   despawnHeight: -20
-  Fisherman: {fileID: 1915341761769767957, guid: 507b35ffb34f82741ba1ff9100176971, type: 3}
-  WormSpawn: {fileID: 6830555678200134877, guid: dded1efa60c2eb84b8e8aac0d37609cd, type: 3}
 --- !u!65 &4851961905999591638
 BoxCollider:
   m_ObjectHideFlags: 0
