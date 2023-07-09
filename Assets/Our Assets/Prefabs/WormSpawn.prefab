@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 3
-  Food: {fileID: 9056091254752640907, guid: e99476efbef102e409cfd835db997b03, type: 3}
+  Food: {fileID: 468651785636164018, guid: e99476efbef102e409cfd835db997b03, type: 3}
   maxDistance: 10

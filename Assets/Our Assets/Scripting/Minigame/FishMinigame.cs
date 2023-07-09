@@ -78,14 +78,16 @@ public class FishMinigame : MonoBehaviour
                 //Debug.Log(context.action.name);
                 pointsEarned += currentLure.pointsPerHit;
                 inputCount += strength; // inputCount = inputCount + (1 * strength)
+                barGraphic.success = true;
             }
         }
         return correct;
     }
     
     private void Update() {
+        barGraphic.gameObject.SetActive(running);
         if(running){
-            currentLure.transform.position = FishPlayer.instance.spriteTransform.position - Vector3.back*0.01f;
+            currentLure.transform.position = FishPlayer.instance.mouthPos.position;
             countTime += Time.deltaTime;
             
             if (inputCount >= currentLure.mashingGoal) EndGame(true);
