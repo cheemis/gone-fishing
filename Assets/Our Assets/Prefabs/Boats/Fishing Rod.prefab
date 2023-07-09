@@ -156,7 +156,7 @@ MonoBehaviour:
   end: {fileID: 0}
   line: {fileID: 0}
   vertexCount: 12
-  midOffset: -2
+  midOffset: -5
 --- !u!1 &1167157675966567582
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ Transform:
   - {fileID: 4811415345929967386}
   - {fileID: 8548059173175696135}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3313995159089509793
 GameObject:

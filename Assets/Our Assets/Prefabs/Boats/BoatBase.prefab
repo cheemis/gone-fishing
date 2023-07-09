@@ -635,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 1551261244466191301}
     - target: {fileID: 1583082447487506291, guid: b3a323de75439f843806a268b7956e78, type: 3}
       propertyPath: midOffset
-      value: 5
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6905600081887232973, guid: b3a323de75439f843806a268b7956e78, type: 3}
       propertyPath: m_LocalScale.x

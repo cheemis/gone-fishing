@@ -15,6 +15,7 @@ public class FishingLine : MonoBehaviour
 
     //mid offset
     public float midOffset = 2;
+    public float toughtness = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,7 @@ public class FishingLine : MonoBehaviour
     {
         if(start && start.transform && mid && mid.transform)
         mid.transform.position = new Vector3((start.position.x + end.position.x) / 2,
-                                             midOffset,
+                                                (start.position.y + end.position.y) / 2 + midOffset * (1.0f - toughtness),
                                              (start.position.z + end.position.z / 2));
         var pointList = new List<Vector3>();
 

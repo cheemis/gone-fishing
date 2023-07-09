@@ -74,23 +74,28 @@ public class FishingBoat : MonoBehaviour
             case "fishing":
                 Fishing();
                 CheckPlayerDistance();
+                line.toughtness = Mathf.Clamp(line.toughtness - Time.deltaTime, 0, 1);
                 return;
 
             case "spinning":
                 Spinning();
+                line.toughtness = Mathf.Clamp(line.toughtness - Time.deltaTime, 0, 1);
                 return;
 
 
             case "fighting": //do nothing, fighting the fish (maybe force lure onto player here)
+                line.toughtness = Mathf.Clamp(line.toughtness + Time.deltaTime, 0, 1);
                 return;
 
 
             case "sinking":
                 Sink();
+                line.toughtness = Mathf.Clamp(line.toughtness - Time.deltaTime, 0, 1);
                 return;
 
             default:
                 boatState = "sinking"; //for testing purposes
+                line.toughtness = Mathf.Clamp(line.toughtness - Time.deltaTime, 0, 1);
                 return;
         }
     }
