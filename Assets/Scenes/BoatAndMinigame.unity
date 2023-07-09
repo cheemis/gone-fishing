@@ -157,9 +157,9 @@ MonoBehaviour:
   - {fileID: 276793326921621783, guid: 756236f761e279942993a75f3cf7def3, type: 3}
   - {fileID: 6731370947970976965, guid: 490a9aa100d2f644d925228c53d714c2, type: 3}
   oceanSurface: {fileID: 1838910711}
-  spawnDistance: {x: -19, y: 19}
-  oceanClamp: {x: -20, y: 20}
-  maxShips: 4
+  spawnDistance: {x: -75, y: 75}
+  oceanClamp: {x: -80, y: 80}
+  maxShips: 10
   player: {fileID: 1890670760}
   playerXP: 1
   distanceFromPlayer: 10
@@ -249,7 +249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141605632}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -20, y: 0, z: 0}
+  m_LocalPosition: {x: -80, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -440,7 +440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507960540}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 20, y: 0, z: 0}
+  m_LocalPosition: {x: 80, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -475,7 +475,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.32694018, g: 0.745283, b: 0.64014566, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

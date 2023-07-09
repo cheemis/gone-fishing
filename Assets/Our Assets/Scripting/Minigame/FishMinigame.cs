@@ -26,8 +26,6 @@ public class FishMinigame : MonoBehaviour
     [SerializeField]
     private UnityEvent<LureObject, float> runGame;
 
-    private float timerTool = 0;
-
     private float phaseChange = 0;
     private float startPhase = 0;
 
@@ -65,7 +63,6 @@ public class FishMinigame : MonoBehaviour
         stageIndex = 0;
         barGraphic.ChangeColor(currentLure.inputs[stageIndex][0]);
         countTime = 0;
-        timerTool = 0;
         inputCount = 0;
         startPhase = 0;
         phaseChange = currentLure.timeLimits[0];
@@ -124,6 +121,8 @@ public class FishMinigame : MonoBehaviour
             //Debug.Log(currentLure.totalTimeLimit);
             // Debug.Log(currentLure.totalTimeLimit);
             // Debug.Log("failure");
+            currentLure.myBoat.boatState = "fishing";
+            StartCoroutine(currentLure.myBoat.waitLure());
         }
         FishPlayer.instance.SetStruggle(false);
         currentLure.gameObject.SetActive(false);

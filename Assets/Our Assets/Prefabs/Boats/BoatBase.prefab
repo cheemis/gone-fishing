@@ -298,12 +298,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingSpeed: 1
-  spinSpeed: 60
+  spinSpeed: 180
   maxFallSpeed: 0.5
   fallAcceleration: 0.25
   fallingSpeed: 0
   rotationAmount: 45
   rotationAcceleration: 5
+  lure: {fileID: 2165045795160722245}
   boatState: fishing
   despawnHeight: -20
 --- !u!65 &4851961905999591638

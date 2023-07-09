@@ -31,7 +31,10 @@ public class FishingBoat : MonoBehaviour
     public float rotationAmount = 45f;
     public float rotationAcceleration = 1f;
     private Transform boatAssets;
-    private FishingLine lure;
+    private FishingLine line;
+
+    [SerializeField]
+    private LureObject lure;
 
     [Space]
     [Space]
@@ -44,7 +47,7 @@ public class FishingBoat : MonoBehaviour
     {
         boatManager = GameObject.Find("Boat Manager").GetComponent<BoatManager>();
         boatAssets = transform.GetChild(0);
-        lure = GetComponentInChildren<FishingLine>();
+        line = GetComponentInChildren<FishingLine>();
     }
 
     // Update is called once per frame
@@ -119,7 +122,7 @@ public class FishingBoat : MonoBehaviour
            (Mathf.Abs(xPos - boatClamps.y) < 1 && goingRight))
         {
             boatState = "spinning";
-            //disable lure;
+            lure.gameObject.SetActive(false);
         }
     }
 
@@ -134,7 +137,7 @@ public class FishingBoat : MonoBehaviour
 
             goingRight = !goingRight;
             boatState = "fishing";
-            //enable lure
+            lure.gameObject.SetActive(true);
         }
 
     }
@@ -159,7 +162,7 @@ public class FishingBoat : MonoBehaviour
             rotationAmount -= currentRot;
 
             //sink lure
-            lure.midOffset -= fallingSpeed;
+            line.midOffset -= fallingSpeed;
         }
 
         
@@ -170,5 +173,11 @@ public class FishingBoat : MonoBehaviour
             boatManager.RemoveShip();
             Destroy(this.gameObject);
         }
+    }
+
+    public IEnumerator waitLure(){
+        
+        yield return new WaitForSeconds(3f);
+        lure.gameObject.SetActive(true);
     }
 }
