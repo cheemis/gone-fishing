@@ -70,6 +70,7 @@ public class FishMinigame : MonoBehaviour
         phaseChange = currentLure.timeLimits[0];
         // strength = newStrength;
         currentLure.gameObject.GetComponent<AudioSource>().Play();
+        AudioManager.instance.PlayMusic(AudioManager.instance.pullingMusic);
         running = true;
     }
     
@@ -121,6 +122,7 @@ public class FishMinigame : MonoBehaviour
             // Debug.Log("success");
             //give player points
             //give the worm spawner foodEarned
+            AudioManager.instance.PlayMusic(AudioManager.instance.gameMusic);
             currentLure.gameObject.GetComponent<AudioSource>().Stop();
             currentLure.myBoat.audioSource.Stop();
             currentLure.myBoat.audioSource.clip = currentLure.myBoat.boatSink;

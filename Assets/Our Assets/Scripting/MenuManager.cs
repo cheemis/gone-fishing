@@ -14,25 +14,18 @@ public class MenuManager : MonoBehaviour
     
     [SerializeField] private Slider SFXVolumeSlider; 
     [SerializeField] private Slider MusicVolumeSlider;
-    
-    [SerializeField]
-    private AudioSource mainMenuMusic;
-    
+
     public string gameSceneName = "Main";
     
     private void Start() {
-        if (mainMenuMusic == null) {
-            Debug.Log("no main menu music source assigned!");
-        }
-        
-        mainMenuMusic.PlayDelayed(0.5f);
+        AudioManager.instance.PlayMusic(AudioManager.instance.menuMusic);
     }
 
     #region Button Methods
 
     public void PlayGame()
     {
-        mainMenuMusic.Stop();
+        AudioManager.instance.PlayMusic(AudioManager.instance.gameMusic);
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneName);
     }
 

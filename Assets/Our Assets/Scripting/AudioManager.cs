@@ -7,9 +7,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; private set; }
     
-    [SerializeField] private AudioClip menuMusic;
-    [SerializeField] private AudioClip gameMusic;
-    [SerializeField] private AudioClip pullingMusic;
+    [SerializeField] public AudioClip menuMusic;
+    [SerializeField] public AudioClip gameMusic;
+    [SerializeField] public AudioClip pullingMusic;
 
     private void Awake()
     {
@@ -89,16 +89,6 @@ public class AudioManager : MonoBehaviour
             Debug.Log("currentMusicSource.volume: " + _currentMusicSource.volume);
         }
     }
-
-    enum MusicState
-    {
-        Playing,
-        Transitioning,
-        FadingOut
-    }
-    
-    private MusicState _musicState = MusicState.Playing;
-    
 
     public void PlayMusic(AudioClip clip)
     {
