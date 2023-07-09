@@ -136,7 +136,7 @@ public class FishingBoat : MonoBehaviour
                                                 Quaternion.Euler(0, -goalRot, 0),
                                                 spinSpeed * Time.deltaTime);
 
-        Debug.Log("l: " + l);
+        //Debug.Log("l: " + l);
 
         transform.rotation = l;
 

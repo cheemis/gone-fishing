@@ -13,7 +13,6 @@ public class BoatManager : MonoBehaviour
     public Vector2 oceanClamp = new Vector2(-70, 70);
     public int maxShips = 3;
     private int numOfShips = 0;
-    private float lastPos = 0;
 
     [Space]
     [Space]
@@ -23,6 +22,12 @@ public class BoatManager : MonoBehaviour
     //private PlayerController player;
     public float playerXP; //this will be removed and instead refer to player XP in the player class
     public float distanceFromPlayer = 20f;
+
+    //fixing variables (send help)
+    private float[] lastPositions = new float[10];
+    private int positionIdex = 0;
+
+
 
     [Space]
     [Space]
@@ -89,19 +94,38 @@ public class BoatManager : MonoBehaviour
         }
 
         int loop = 0;
+        bool nearLast = true;
 
         //make sure boat doesnt spawn too close to another spawned boat
-        while((xPos == 1 || xPos == -1 || Mathf.Abs(xPos - lastPos) < 10) && loop < 100)
+        while(nearLast && loop < 100)
         {
             //finalize spawn position
-            xPos = player.transform.position.x + xPos * distanceFromPlayer * Random.Range(spawnDistance.x,
-                                                                                          spawnDistance.y);
-            //Debug.Log("before clamp, xpos was " + xPos);
+            xPos = distanceFromPlayer + xPos * Random.Range(player.transform.position.x,
+                                                            spawnDistance.y);
+
+            //Debug.Log("random xpos found: " + xPos);
+
             xPos = Mathf.Clamp(xPos, spawnDistance.x, spawnDistance.y);
-            //Debug.Log("xpos was " + xPos + ", pass? " + !(xPos == 1 || xPos == -1 || Mathf.Abs(xPos - lastPos) < 10));
+
+            //Debug.Log("random xpos post clamp: " + xPos);
+
+            nearLast = false;
+            for(int i = 0; i < lastPositions.Length; i++)
+            {
+                if(Mathf.Abs(lastPositions[i] - xPos) < 10)
+                {
+                    nearLast = true;
+                    break;
+                }
+            }
             loop++;
         }
-        lastPos = xPos;
+
+        if (!nearLast) Debug.Log("found distant xpos: " + xPos);
+        else Debug.Log("did NOT find proper xpos: " + xPos);
+
+        lastPositions[positionIdex] = xPos;
+        positionIdex = (positionIdex + 1) % lastPositions.Length;
 
 
         Vector3 boatSpawnPos = new Vector3(xPos, oceanSurface.position.y, 0);
