@@ -238,7 +238,7 @@ public class FishingBoat : MonoBehaviour
             }
         }
 
-        Debug.Log(gameObject.name + ": " + distance);
+        //Debug.Log(gameObject.name + ": " + distance);
     }
 
 
