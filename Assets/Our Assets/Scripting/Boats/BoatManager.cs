@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BoatManager : MonoBehaviour
 {
@@ -37,8 +38,13 @@ public class BoatManager : MonoBehaviour
     [Space]
 
     //game over management
+    [SerializeField]
+    private Animator anim;
+    [SerializeField]
+    private float animTime;
     private int upperLimitOfShips = 10;
     private bool reachedUpperLimit = false;
+
 
 
 
@@ -150,9 +156,14 @@ public class BoatManager : MonoBehaviour
     {
         if(!reachedUpperLimit)
         {
-            if (maxShips < upperLimitOfShips && (maxShips/2 + 1) < FishPlayer.instance.strength)
+            if (maxShips < upperLimitOfShips && (maxShips/4.75) < FishPlayer.instance.strength)
             {
                 maxShips++;
+            }
+
+            if(maxShips == 10)
+            {
+                reachedUpperLimit = true;
             }
         }
         else
@@ -167,6 +178,8 @@ public class BoatManager : MonoBehaviour
         {
             //end the game
             Debug.Log("game won");
+            anim.SetBool("gameOver", true);
+            StartCoroutine(ReturnToTitleScreen());
         }
         else
         {
@@ -177,5 +190,11 @@ public class BoatManager : MonoBehaviour
             AddShips();
         }
         
+    }
+
+    public IEnumerator ReturnToTitleScreen()
+    {
+        yield return new WaitForSeconds(animTime);
+        SceneManager.LoadSceneAsync(0);
     }
 }
