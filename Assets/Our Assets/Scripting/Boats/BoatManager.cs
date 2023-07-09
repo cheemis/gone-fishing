@@ -141,7 +141,7 @@ public class BoatManager : MonoBehaviour
 
         Vector3 boatSpawnPos = new Vector3(xPos, oceanSurface.position.y, 0);
         GameObject newShip = Instantiate(ships[shipIndex], boatSpawnPos, ships[shipIndex].transform.rotation);
-        newShip.GetComponent<FishingBoat>().InstantiateBoat(oceanClamp, spawnDistance);
+        newShip.GetComponent<FishingBoat>().InstantiateBoat(oceanClamp, spawnDistance, player);
 
         currentBoats.Add(newShip);
 

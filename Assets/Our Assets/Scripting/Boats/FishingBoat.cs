@@ -36,6 +36,11 @@ public class FishingBoat : MonoBehaviour
     [SerializeField]
     private LureObject lure;
 
+    //player objects
+    private GameObject player;
+    [SerializeField]
+    private float maxDistanceFromPlayer = 30f;
+
     [Space]
     [Space]
     //event management variables
@@ -68,6 +73,7 @@ public class FishingBoat : MonoBehaviour
         {
             case "fishing":
                 Fishing();
+                CheckPlayerDistance();
                 return;
 
             case "spinning":
@@ -100,10 +106,11 @@ public class FishingBoat : MonoBehaviour
     }
 
 
-    public void InstantiateBoat(Vector2 oceanClamps, Vector2 spawnClamps)
+    public void InstantiateBoat(Vector2 oceanClamps, Vector2 spawnClamps, GameObject playerGO)
     {
         //debug
-        this.gameObject.name = "boat " + Random.Range(0, 1000);
+        player = playerGO;
+        gameObject.name = "boat " + Random.Range(0, 1000);
 
         //set clamps
         boatClamps = new Vector2(Random.Range(oceanClamps.x, spawnClamps.x),
@@ -205,8 +212,32 @@ public class FishingBoat : MonoBehaviour
         }
     }
 
-    public IEnumerator waitLure(){
-        
+    private void CheckPlayerDistance()
+    {
+        float distance = transform.position.x - player.transform.position.x;
+        float sign = Mathf.Sign(distance);
+
+        if (Mathf.Abs(distance) > maxDistanceFromPlayer)
+        {
+            if(sign > 0 && goalRot == 180)
+            {
+                boatState = "spinning";
+                return;
+            }
+
+            if (sign < 0 && goalRot == 0)
+            {
+                boatState = "spinning";
+                return;
+            }
+        }
+
+        Debug.Log(gameObject.name + ": " + distance);
+    }
+
+
+    public IEnumerator waitLure()
+    {
         yield return new WaitForSeconds(3f);
         lure.gameObject.SetActive(true);
     }
