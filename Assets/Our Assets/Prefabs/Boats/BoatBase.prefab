@@ -409,6 +409,7 @@ MonoBehaviour:
   rotationAmount: 45
   rotationAcceleration: 5
   lure: {fileID: 2165045795160722245}
+  maxDistanceFromPlayer: 45
   boatState: fishing
   despawnHeight: -3.5
   WaitingPostSpin: 0
