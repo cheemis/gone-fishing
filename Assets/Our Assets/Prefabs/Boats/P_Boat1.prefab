@@ -96,7 +96,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224349267832765376, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8224349267832765376, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -137,6 +137,18 @@ PrefabInstance:
     - target: {fileID: 8224349267832765376, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262539171680864661, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262539171680864661, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262539171680864661, guid: f4e8d0e6a0cd3db4f877a0949493b3c0, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -182,6 +194,8 @@ MonoBehaviour:
   timeLimits: []
   totalTimeLimit: 0
   inputs: []
+  Fisherman: {fileID: 0}
+  WormSpawn: {fileID: 0}
   pointsPerHit: 0
   progressBarSpeed: 0
   myBoat: {fileID: 4288610825724832}
